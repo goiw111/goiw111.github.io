@@ -1,0 +1,81 @@
+baseURL = "https://goiw111.github.io"
+title = "souhail chahmout blog"
+languageCode = "en-us"
+theme = "hugo-theme-m10c"
+themesDir = "./themes/"
+
+# Correct pagination syntax (replaces deprecated 'paginate')
+[pagination]
+  pagerSize = 8
+
+# Enable Emoji and Syntax Highlighting
+enableEmoji = true
+pygmentsStyle = "monokai"
+pygmentsCodeFences = true
+
+# Build Performance
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+[author]
+  name = "souhail chahmot"
+  email = "chahmot.s@gmail.com"
+  bio = "I am a first-year master's student studying electrical engineering and embedded systems."
+
+[params]
+  avatar = "avatar.jpeg"
+  description = "I am a first-year master's student studying electrical engineering and embedded systems."
+  menu_item_separator = " | "
+  dateFormat = "January 2, 2025"
+  showReadingTime = true
+
+  # Color Scheme (using your preferred #3988f1 blue)
+  [params.style]
+    primaryColor = "#3988f1"
+    primaryColorHover = "#2a7ae9"
+    darkestColor = "#1a1a2e"
+    darkColor = "#16213e"
+    lightColor = "#e6f1ff"
+    lightestColor = "#ffffff"
+
+  # Modern Analytics (GA4)
+  [services.googleAnalytics]
+    id = "G-XXXXXXXXXX"  # Replace with your GA4 measurement ID
+
+  # Social Links
+  [[params.social]]
+    name = "GitHub"
+    icon = "github"
+    url = "https://github.com/goiw111"
+  [[params.social]]
+    name = "Linkedin"
+    icon = "linkedin"
+    url = "https://www.linkedin.com/in/souhail-chahmout/"
+
+# Menu Configuration
+[[menu.main]]
+  identifier = "home"
+  name = "Home"
+  url = "/"
+  weight = 1
+[[menu.main]]
+  identifier = "posts"
+  name = "Blog"
+  url = "/posts/"
+  weight = 2
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 3
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 4
+
+[markup.goldmark.renderer]
+  unsafe = true  # Allow raw HTML in Markdown
+
+[outputs]
+  home = ["HTML", "RSS"]
+
