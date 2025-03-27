@@ -1,5 +1,5 @@
 baseURL = "https://goiw111.github.io"
-title = "souhail chahmout blog"
+title = "chahmout blog"
 languageCode = "en-us"
 theme = "hugo-theme-m10c"
 themesDir = "./themes/"
