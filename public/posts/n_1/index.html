@@ -115,11 +115,12 @@ Once your changes are pushed to GitHub, you need to make some adjustments to the
 </span></span><span style=display:flex><span>            <span style=color:#ae81ff>hugo-</span>
 </span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build with Hugo</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>          hugo \
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>            --gc \
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>            --minify \
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>            --baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34; \
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>            --cacheDir &#34;${{ runner.temp }}/hugo_cache&#34;</span>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          hugo \</span>
+</span></span><span style=display:flex><span>	        --<span style=color:#ae81ff>cleanDestinationDir \</span>
+</span></span><span style=display:flex><span>            --<span style=color:#ae81ff>gc \</span>
+</span></span><span style=display:flex><span>            --<span style=color:#ae81ff>minify \</span>
+</span></span><span style=display:flex><span>            --<span style=color:#ae81ff>baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34; \</span>
+</span></span><span style=display:flex><span>            --<span style=color:#ae81ff>cacheDir &#34;${{ runner.temp }}/hugo_cache&#34;</span>
 </span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Cache Save</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>id</span>: <span style=color:#ae81ff>cache-save</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/cache/save@v4</span>
