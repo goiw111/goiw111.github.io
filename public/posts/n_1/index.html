@@ -144,11 +144,16 @@ Once your changes are pushed to GitHub, you need to make some adjustments to the
 </span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy to GitHub Pages</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>id</span>: <span style=color:#ae81ff>deployment</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/deploy-pages@v4</span>
-</span></span></code></pre></div><p>The above content was taken from Hugo’s documentation. For more information, please refer to <a href=https://gohugo.io/hosting-and-deployment/hosting-on-github/>Host on GitHub Pages.</a></p><p><strong>step 4 : Connect to Obsidian Export Plugin</strong>
-In the plugin settings (Obsidian → Hugo Export):</p><pre tabindex=0><code>Posts Directory: /full/path/to/my_blog/content/posts 
+</span></span></code></pre></div><p>The above content was taken from Hugo’s documentation. For more information, please refer to <a href=https://gohugo.io/hosting-and-deployment/hosting-on-github/>Host on GitHub Pages.</a></p><p><strong>step 4 : Connect to Obsidian Export Plugin</strong></p><p>firs clone the plugin to you Vault plugin folder (/path/to/Obsidian Vault/.obsidian/plugins/)
+from this repo <a href=https://github.com/goiw111/hugo_exporter>hugo_exporter</a></p><pre tabindex=0><code>cd your-obsidian-vault/.obsidian/plugins/
+git clone https://github.com/goiw111/hugo_exporter.git
+</code></pre><ul><li><strong>Enable</strong> in Obsidian:</li></ul><pre tabindex=0><code>Settings → Community Plugins → Enable &#34;Hugo Export&#34;
+</code></pre><p>In the plugin settings (Obsidian → Hugo Export):</p><pre tabindex=0><code>Posts Directory: /full/path/to/my_blog/content/posts 
 Images Directory: /full/path/to/my_blog/static/images 
-</code></pre><p>(Use absolute paths!)</p><ol start=8><li>(Optional) Deployment Setup
-For GitHub Pages:</li></ol><p>Create a deploy.sh script:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/sh
+</code></pre><p>Open note → Ctrl+P → &ldquo;Export Active Note to Hugo&rdquo;</p><p>Verify Exports</p><pre tabindex=0><code>cd your-hugo-folder
+hugo server -D  # Check at http://localhost:1313
+</code></pre><ol start=8><li>(Optional) Deployment Setup
+Create a deploy.sh script:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/sh
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>hugo --minify
 </span></span><span style=display:flex><span>cd public <span style=color:#f92672>&amp;&amp;</span> git add . <span style=color:#f92672>&amp;&amp;</span> git commit -m <span style=color:#e6db74>&#34;Update&#34;</span> <span style=color:#f92672>&amp;&amp;</span> git push
 </span></span></code></pre></div><p>now run:</p><pre tabindex=0><code>chmod +x deploy.sh
