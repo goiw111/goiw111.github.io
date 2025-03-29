@@ -63,7 +63,8 @@ jobs:
             hugo-
       - name: Build with Hugo
         run: |
-          hugo -D \
+          hugo \
+            --cleanDestinationDir \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
