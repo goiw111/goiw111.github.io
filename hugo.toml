@@ -1,8 +1,12 @@
 baseURL = "https://goiw111.github.io"
-title = "chahmout blog"
+title = "My Blog"
 languageCode = "en-us"
-theme = "hugo-theme-m10c"
 themesDir = "./themes/"
+theme="archie"
+copyright = "souhail-chahmout"
+pygmentsstyle = "monokai"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
 
 # Correct pagination syntax (replaces deprecated 'paginate')
 [pagination]
@@ -10,7 +14,6 @@ themesDir = "./themes/"
 
 # Enable Emoji and Syntax Highlighting
 enableEmoji = true
-pygmentsStyle = "monokai"
 pygmentsCodeFences = true
 
 # Build Performance
@@ -27,15 +30,18 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   menu_item_separator = " | "
   dateFormat = "January 2, 2025"
   showReadingTime = true
+	mode="auto"
+	useCDN=false
+	subtitle = "HI, my name is Souhail and This blog is a space where I share my experiences."
 
   # Color Scheme (using your preferred #3988f1 blue)
-  [params.style]
-    primaryColor = "#3988f1"
-    primaryColorHover = "#2a7ae9"
-    darkestColor = "#1a1a2e"
-    darkColor = "#16213e"
-    lightColor = "#e6f1ff"
-    lightestColor = "#ffffff"
+  #[params.style]
+  #  primaryColor = "#3988f1"
+  #  primaryColorHover = "#2a7ae9"
+  #  darkestColor = "#1a1a2e"
+  #  darkColor = "#16213e"
+  #  lightColor = "#e6f1ff"
+  #  lightestColor = "#ffffff"
 
   # Modern Analytics (GA4)
   [services.googleAnalytics]
@@ -68,10 +74,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   url = "/tags/"
   weight = 3
 [[menu.main]]
-  identifier = "about"
-  name = "About"
-  url = "/about/"
-  weight = 4
+name = "About"
+url = "/about"
+weight = 3
 
 [markup.goldmark.renderer]
   unsafe = true  # Allow raw HTML in Markdown
