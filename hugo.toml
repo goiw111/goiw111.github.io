@@ -24,6 +24,15 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   email = "chahmot.s@gmail.com"
   bio = "I am a first-year master's student studying electrical engineering and embedded systems."
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['$', '$']]
+
 [params]
   avatar = "avatar.jpeg"
   description = "I am a first-year master's student studying electrical engineering and embedded systems."
@@ -33,6 +42,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 	mode="auto"
 	useCDN=false
 	subtitle = "HI, my name is Souhail and This blog is a space where I share my experiences."
+  math = true
 
   # Color Scheme (using your preferred #3988f1 blue)
   #[params.style]
