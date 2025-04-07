@@ -1,5 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HardwareTips on My Blog</title><link>https://goiw111.github.io/tags/hardwaretips/</link><description>Recent content in HardwareTips on My Blog</description><generator>Hugo</generator><language>en-us</language><copyright>souhail-chahmout</copyright><lastBuildDate>Sat, 29 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://goiw111.github.io/tags/hardwaretips/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Musical Synthesizer with FPGA and VHDL: A Step-by-Step Guide</title><link>https://goiw111.github.io/posts/n_2/</link><pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate><guid>https://goiw111.github.io/posts/n_2/</guid><description>&lt;p>&lt;img src="https://goiw111.github.io/images/N_2_5.jpg" alt="N_2_5">&lt;/p>
-&lt;h2 id="introduction">Introduction&lt;/h2>
-&lt;p>This project wasn’t just about making music with hardware – it was a &lt;strong>hardware detective story&lt;/strong>. Armed with an ancient Chinese FPGA board and zero documentation, I accepted the challenge to breathe life into forgotten technology. Here’s how I turned frustration into a functional synthesizer!&lt;/p>
-&lt;h2 id="overcoming-buzzer-limitations">Overcoming Buzzer Limitations&lt;/h2>
-&lt;p>One of the first problems I encountered was that the passive buzzer couldn&amp;rsquo;t properly reproduce middle C (C4, 262Hz) and lower notes. When attempting to play the classic &amp;ldquo;Do Re Mi&amp;rdquo; scale starting from C4, the buzzer produced weak, distorted sounds with noticeable clicking artifacts rather than clear musical tones.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HardwareTips on My Blog</title>
+    <link>http://localhost:1313/tags/hardwaretips/</link>
+    <description>Recent content in HardwareTips on My Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>souhail-chahmout</copyright>
+    <lastBuildDate>Sat, 29 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/hardwaretips/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Musical Synthesizer with FPGA and VHDL: A Step-by-Step Guide</title>
+      <link>http://localhost:1313/posts/n_2/</link>
+      <pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/n_2/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/N_2_5.jpg&#34; alt=&#34;N_2_5&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This project wasn’t just about making music with hardware – it was a &lt;strong&gt;hardware detective story&lt;/strong&gt;. Armed with an ancient Chinese FPGA board and zero documentation, I accepted the challenge to breathe life into forgotten technology. Here’s how I turned frustration into a functional synthesizer!&lt;/p&gt;&#xA;&lt;h2 id=&#34;overcoming-buzzer-limitations&#34;&gt;Overcoming Buzzer Limitations&lt;/h2&gt;&#xA;&lt;p&gt;One of the first problems I encountered was that the passive buzzer couldn&amp;rsquo;t properly reproduce middle C (C4, 262Hz) and lower notes. When attempting to play the classic &amp;ldquo;Do Re Mi&amp;rdquo; scale starting from C4, the buzzer produced weak, distorted sounds with noticeable clicking artifacts rather than clear musical tones.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

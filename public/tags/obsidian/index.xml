@@ -1,9 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Obsidian on My Blog</title><link>https://goiw111.github.io/tags/obsidian/</link><description>Recent content in Obsidian on My Blog</description><generator>Hugo</generator><language>en-us</language><copyright>souhail-chahmout</copyright><lastBuildDate>Sat, 29 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://goiw111.github.io/tags/obsidian/index.xml" rel="self" type="application/rss+xml"/><item><title>From Obsidian Notes to Hugo Blog Posts. My Automated Publishing Workflow</title><link>https://goiw111.github.io/posts/n_1/</link><pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate><guid>https://goiw111.github.io/posts/n_1/</guid><description>&lt;p>As a master’s student, I rely on Obsidian for organizing my research notes, ideas, and resources—its graph view and local-first approach make it perfect for long-term knowledge management. But when I want to share polished articles, I use Hugo, a fast and flexible static site generator.&lt;/p>
-&lt;p>The problem? Manually converting Obsidian notes into Hugo-ready Markdown was tedious. I needed a way to:&lt;/p>
-&lt;ul>
-&lt;li>Convert &lt;code>[[wikilinks]] → [Markdown links](/posts/slug)&lt;/code>&lt;/li>
-&lt;li>Transform &lt;code>![[image.png]] → ![](/images/image.png)&lt;/code>and copy images to /static/images&lt;/li>
-&lt;li>Auto-generate title and date in front matter while preserving existing YAML
-So, I built an Obsidian plugin to automate this process.&lt;/li>
-&lt;/ul>
-&lt;p>Here’s how it works, step by step.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Obsidian on My Blog</title>
+    <link>http://localhost:1313/tags/obsidian/</link>
+    <description>Recent content in Obsidian on My Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>souhail-chahmout</copyright>
+    <lastBuildDate>Sat, 29 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/obsidian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Obsidian Notes to Hugo Blog Posts. My Automated Publishing Workflow</title>
+      <link>http://localhost:1313/posts/n_1/</link>
+      <pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/n_1/</guid>
+      <description>&lt;p&gt;As a master’s student, I rely on Obsidian for organizing my research notes, ideas, and resources—its graph view and local-first approach make it perfect for long-term knowledge management. But when I want to share polished articles, I use Hugo, a fast and flexible static site generator.&lt;/p&gt;&#xA;&lt;p&gt;The problem? Manually converting Obsidian notes into Hugo-ready Markdown was tedious. I needed a way to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Convert &lt;code&gt;[[wikilinks]] → [Markdown links](/posts/slug)&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Transform &lt;code&gt;![[image.png]] → ![](/images/image.png)&lt;/code&gt;and copy images to /static/images&lt;/li&gt;&#xA;&lt;li&gt;Auto-generate title and date in front matter while preserving existing YAML&#xA;So, I built an Obsidian plugin to automate this process.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Here’s how it works, step by step.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
