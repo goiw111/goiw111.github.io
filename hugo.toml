@@ -1,96 +1,69 @@
-baseURL = "https://goiw111.github.io"
+DefaultContentLanguage = "en"
+author = "souhail chahmout"
+baseURL = "https://goiw111.github.io/"
+copyright = "Copyright © 2025–2025"
+disqusShortname = "S.C"
+enableInlineShortcodes = true
+#footnoteReturnLinkContents = "^"
+googleAnalytics = "GTM-NDDLWNZT" ## or "G-xxxxxxxx" in Google Analytics v4, in hugo v0.82+
+hasCJKLanguage = true
+languageCode = "cn"
+theme = "hugo-theme-tokiwa"
 title = "My Blog"
-languageCode = "en-us"
-themesDir = "./themes/"
-theme="archie"
-copyright = "souhail-chahmout"
-pygmentsstyle = "monokai"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
-
-# Correct pagination syntax (replaces deprecated 'paginate')
-[pagination]
-  pagerSize = 8
-
-# Enable Emoji and Syntax Highlighting
-enableEmoji = true
-pygmentsCodeFences = true
-
-# Build Performance
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
-
-[author]
-  name = "souhail chahmot"
-  email = "chahmot.s@gmail.com"
-  bio = "I am a first-year master's student studying electrical engineering and embedded systems."
 
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.extensions]
-      [markup.goldmark.extensions.passthrough]
-        enable = true
-        [markup.goldmark.extensions.passthrough.delimiters]
-          block = [['\[', '\]'], ['$$', '$$']]
-          inline = [['$', '$']]
-
-[params]
-  avatar = "avatar.jpeg"
-  description = "I am a first-year master's student studying electrical engineering and embedded systems."
-  menu_item_separator = " | "
-  dateFormat = "January 2, 2025"
-  showReadingTime = true
-	mode="auto"
-	useCDN=false
-	subtitle = "HI, my name is Souhail and This blog is a space where I share my experiences."
-  math = true
-
-  # Color Scheme (using your preferred #3988f1 blue)
-  #[params.style]
-  #  primaryColor = "#3988f1"
-  #  primaryColorHover = "#2a7ae9"
-  #  darkestColor = "#1a1a2e"
-  #  darkColor = "#16213e"
-  #  lightColor = "#e6f1ff"
-  #  lightestColor = "#ffffff"
-
-  # Modern Analytics (GA4)
-  [services.googleAnalytics]
-    id = "G-XXXXXXXXXX"  # Replace with your GA4 measurement ID
-
-  # Social Links
-  [[params.social]]
-    name = "GitHub"
-    icon = "github"
-    url = "https://github.com/goiw111"
-  [[params.social]]
-    name = "Linkedin"
-    icon = "linkedin"
-    url = "https://www.linkedin.com/in/souhail-chahmout/"
-
-# Menu Configuration
-[[menu.main]]
-  identifier = "home"
-  name = "Home"
-  url = "/"
-  weight = 1
-[[menu.main]]
-  identifier = "posts"
-  name = "Blog"
-  url = "/posts/"
-  weight = 2
-[[menu.main]]
-  identifier = "tags"
-  name = "Tags"
-  url = "/tags/"
-  weight = 3
-[[menu.main]]
-name = "About"
-url = "/about"
-weight = 3
+[markup.highlight]
+style = "monokailight"
 
 [markup.goldmark.renderer]
-  unsafe = true  # Allow raw HTML in Markdown
+unsafe = true
+
+[params]
+  bannerFont = "fonts"
+  description = """
+  HI, my name is Souhail and This blog is a space where I share my experiences.
+  """ 
+  env = "production" # for Google Analytics and DISQUS.
+  favicon = "img/favicon-32x32.png" 
+  fuse = true # for searchbox. "JSON" must added to output contents. See [outputs].
+  math = true # for introducing $KaTeX$
+  useChineseFonts = false
+  postDateFormat = "2006-1-2"
+  custom_css = ["css/custom.css"]
+
+[menu]
+# Shown in the side menu.
+[[menu.main]]
+identifier = "post"
+name = "Posts"
+url = "/posts/"
+weight = 1
+[[menu.main]]
+name = "Tags"
+url = "/tags/"
+weight = 2
+
+[[menu.main]]
+name = "Categories"
+url = "/categories/"
+weight = 2
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 3
+
+[taxonomies]
+category = "categories"
+series = "series"
+tag = "tags"
+[params.social]
+github    = "https://github.com/goiw111"
+linkedin  = "https://www.linkedin.com/in/souhail-chahmout"
+instagram = "https://www.instagram.com/sohayl.ch"
+mail      = "mailto:chahmot.s@gmail.com"
+
 
 [outputs]
-  home = ["HTML", "RSS"]
-
+home = ["HTML", "RSS", "JSON"]

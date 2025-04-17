@@ -1,20 +1,235 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>HardwareTips on My Blog</title>
-    <link>http://localhost:1313/tags/hardwaretips/</link>
-    <description>Recent content in HardwareTips on My Blog</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <copyright>souhail-chahmout</copyright>
-    <lastBuildDate>Sat, 29 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/hardwaretips/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Building a Musical Synthesizer with FPGA and VHDL: A Step-by-Step Guide</title>
-      <link>http://localhost:1313/posts/n_2/</link>
-      <pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/n_2/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/N_2_5.jpg&#34; alt=&#34;N_2_5&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This project wasn’t just about making music with hardware – it was a &lt;strong&gt;hardware detective story&lt;/strong&gt;. Armed with an ancient Chinese FPGA board and zero documentation, I accepted the challenge to breathe life into forgotten technology. Here’s how I turned frustration into a functional synthesizer!&lt;/p&gt;&#xA;&lt;h2 id=&#34;overcoming-buzzer-limitations&#34;&gt;Overcoming Buzzer Limitations&lt;/h2&gt;&#xA;&lt;p&gt;One of the first problems I encountered was that the passive buzzer couldn&amp;rsquo;t properly reproduce middle C (C4, 262Hz) and lower notes. When attempting to play the classic &amp;ldquo;Do Re Mi&amp;rdquo; scale starting from C4, the buzzer produced weak, distorted sounds with noticeable clicking artifacts rather than clear musical tones.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HardwareTips on My Blog</title><link>https://goiw111.github.io/tags/hardwaretips/</link><description>Recent content in HardwareTips on My Blog</description><generator>Hugo -- gohugo.io</generator><language>cn</language><copyright>Copyright © 2025–2025</copyright><lastBuildDate>Sat, 29 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://goiw111.github.io/tags/hardwaretips/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Musical Synthesizer with FPGA and VHDL: A Step-by-Step Guide</title><link>https://goiw111.github.io/posts/n_2/</link><pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate><guid>https://goiw111.github.io/posts/n_2/</guid><description>&lt;p>&lt;img src="https://goiw111.github.io/images/N_2_5.jpg" alt="N_2_5">&lt;/p>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>This project wasn’t just about making music with hardware – it was a &lt;strong>hardware detective story&lt;/strong>. Armed with an ancient Chinese FPGA board and zero documentation, I accepted the challenge to breathe life into forgotten technology. Here’s how I turned frustration into a functional synthesizer!&lt;/p>
+&lt;h2 id="overcoming-buzzer-limitations">Overcoming Buzzer Limitations&lt;/h2>
+&lt;p>One of the first problems I encountered was that the passive buzzer couldn&amp;rsquo;t properly reproduce middle C (C4, 262Hz) and lower notes. When attempting to play the classic &amp;ldquo;Do Re Mi&amp;rdquo; scale starting from C4, the buzzer produced weak, distorted sounds with noticeable clicking artifacts rather than clear musical tones.&lt;/p>
+&lt;h3 id="why-standard-frequencies-failed">Why Standard Frequencies Failed&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Physical Constraints of Piezo Buzzers&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Passive buzzers rely on mechanical vibration, which dampens significantly at lower frequencies&lt;/li>
+&lt;li>The buzzer&amp;rsquo;s resonant frequency was much higher than middle C, causing poor energy transfer&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Square Wave Limitations&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Low-frequency square waves (below ~400Hz) created audible &amp;ldquo;clicks&amp;rdquo; between pulses&lt;/li>
+&lt;li>The buzzer&amp;rsquo;s physical response time couldn&amp;rsquo;t keep up with slow oscillations&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="the-high-frequency-workaround">The High-Frequency Workaround&lt;/h3>
+&lt;p>By shifting the musical scale up one octave to C5–C6 (523–1047 Hz), we achieved:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Stronger Acoustic Output&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Piezo elements resonate more efficiently at these frequencies&lt;/li>
+&lt;li>Audible volume increased by approximately 300% compared to middle C attempts&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Cleaner Waveform Reproduction&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Eliminated the clicking artifacts of low-frequency operation&lt;/li>
+&lt;li>Produced recognizable musical tones instead of distorted pulses&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Technical Advantages&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Smaller counter values fit perfectly in our 13-bit registers&lt;/li>
+&lt;li>Reduced timing errors from FPGA clock division&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>This frequency shift became the foundation for all subsequent sound generation in the project, proving that sometimes the solution isn&amp;rsquo;t to fight hardware limitations, but to redesign around them. The resulting tones, while higher-pitched than originally intended, maintained clear musical relationships and demonstrated the FPGA&amp;rsquo;s sound generation capabilities.&lt;/p>
+&lt;h2 id="step-1-how-digital-music-works">&lt;strong>Step 1: How Digital Music Works&lt;/strong>&lt;/h2>
+&lt;h3 id="square-waves--sound">&lt;strong>Square Waves = Sound&lt;/strong>&lt;/h3>
+&lt;p>A &lt;strong>square wave&lt;/strong> is the foundation of digital sound generation. By toggling an FPGA pin between HIGH (3.3V) and LOW (0V) at precise intervals, we create a waveform that a passive buzzer converts into audible sound through mechanical vibration.&lt;/p>
+&lt;h3 id="frequency-formula">&lt;strong>Frequency Formula&lt;/strong>&lt;/h3>
+&lt;p>$$ f_n = \tfrac { f_c } {N.2}​​ $$&lt;/p>
+&lt;ul>
+&lt;li>$f_c​$ : Clock speed after prescaling (5 MHz here).&lt;/li>
+&lt;li>$N$ : Counter value defining the note’s period.&lt;/li>
+&lt;/ul>
+&lt;h2 id="step-2-vhdl-code-walkthrough">&lt;strong>Step 2: VHDL Code Walkthrough&lt;/strong>&lt;/h2>
+&lt;h3 id="complete-code-structure">&lt;strong>Complete Code Structure&lt;/strong>&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-VHDL" data-lang="VHDL">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">library&lt;/span> &lt;span style="color:#111">IEEE&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">use&lt;/span> &lt;span style="color:#111">IEEE.STD_LOGIC_1164.&lt;/span>&lt;span style="color:#00a8c8">ALL&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">use&lt;/span> &lt;span style="color:#111">IEEE.NUMERIC_STD.&lt;/span>&lt;span style="color:#00a8c8">ALL&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">entity&lt;/span> &lt;span style="color:#75af00">buzzer&lt;/span> &lt;span style="color:#00a8c8">is&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">Port&lt;/span> &lt;span style="color:#111">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">clk&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">in&lt;/span> &lt;span style="color:#00a8c8">STD_LOGIC&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- 50 MHz clock&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">rst&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">in&lt;/span> &lt;span style="color:#00a8c8">STD_LOGIC&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Active-low reset&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">out_bit&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">out&lt;/span> &lt;span style="color:#00a8c8">STD_LOGIC&lt;/span> &lt;span style="color:#75715e">-- Buzzer output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">end&lt;/span> &lt;span style="color:#75af00">buzzer&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">architecture&lt;/span> &lt;span style="color:#75af00">Behavioral&lt;/span> &lt;span style="color:#00a8c8">of&lt;/span> &lt;span style="color:#75af00">buzzer&lt;/span> &lt;span style="color:#00a8c8">is&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- Clock divider (50 MHz -&amp;gt; 5 MHz)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">signal&lt;/span> &lt;span style="color:#111">clk_div1&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">unsigned&lt;/span>&lt;span style="color:#111">(&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#00a8c8">downto&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#111">)&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- Note frequency counter&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">signal&lt;/span> &lt;span style="color:#111">clk_div2&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">unsigned&lt;/span>&lt;span style="color:#111">(&lt;/span>&lt;span style="color:#ae81ff">12&lt;/span> &lt;span style="color:#00a8c8">downto&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#111">)&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- Note duration counter (~3 seconds per note)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">signal&lt;/span> &lt;span style="color:#111">cnt&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">unsigned&lt;/span>&lt;span style="color:#111">(&lt;/span>&lt;span style="color:#ae81ff">23&lt;/span> &lt;span style="color:#00a8c8">downto&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#111">)&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- State machine (8 notes)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">signal&lt;/span> &lt;span style="color:#111">state&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">unsigned&lt;/span>&lt;span style="color:#111">(&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#00a8c8">downto&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#111">)&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- Musical note constants (C5 to C6)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">constant&lt;/span> &lt;span style="color:#111">C5&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">integer&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#ae81ff">4780&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- 523 Hz&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">constant&lt;/span> &lt;span style="color:#111">D5&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">integer&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#ae81ff">4259&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- 587 Hz&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">constant&lt;/span> &lt;span style="color:#111">E5&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">integer&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#ae81ff">3792&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- 659 Hz&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">constant&lt;/span> &lt;span style="color:#111">F5&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">integer&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#ae81ff">3580&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- 698 Hz&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">constant&lt;/span> &lt;span style="color:#111">G5&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">integer&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#ae81ff">3189&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- 784 Hz&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">constant&lt;/span> &lt;span style="color:#111">A5&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">integer&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#ae81ff">2841&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- 880 Hz&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">constant&lt;/span> &lt;span style="color:#111">B5&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">integer&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#ae81ff">2532&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- 988 Hz&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">constant&lt;/span> &lt;span style="color:#111">C6&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">integer&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#ae81ff">2389&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- 1047 Hz&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">signal&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">integer&lt;/span> &lt;span style="color:#00a8c8">range&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#00a8c8">to&lt;/span> &lt;span style="color:#ae81ff">8191&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#111">C5&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">signal&lt;/span> &lt;span style="color:#111">out_bit_tmp&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#00a8c8">std_logic&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">begin&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">out_bit&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">out_bit_tmp&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">process&lt;/span>&lt;span style="color:#111">(&lt;/span>&lt;span style="color:#111">clk&lt;/span>&lt;span style="color:#111">,&lt;/span> &lt;span style="color:#111">rst&lt;/span>&lt;span style="color:#111">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">begin&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">if&lt;/span> &lt;span style="color:#111">rst&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span> &lt;span style="color:#00a8c8">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- Reset all counters and outputs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">clk_div1&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">clk_div2&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">cnt&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">state&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">out_bit_tmp&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">elsif&lt;/span> &lt;span style="color:#111">rising_edge&lt;/span>&lt;span style="color:#111">(&lt;/span>&lt;span style="color:#111">clk&lt;/span>&lt;span style="color:#111">)&lt;/span> &lt;span style="color:#00a8c8">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- Clock prescaler (divide by 10)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">if&lt;/span> &lt;span style="color:#111">clk_div1&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">9&lt;/span> &lt;span style="color:#00a8c8">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">clk_div1&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">clk_div1&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">clk_div1&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- State machine for note generation&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">case&lt;/span> &lt;span style="color:#111">state&lt;/span> &lt;span style="color:#00a8c8">is&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">when&lt;/span> &lt;span style="color:#d88200">&amp;#34;000&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">C5&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">when&lt;/span> &lt;span style="color:#d88200">&amp;#34;001&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">D5&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Re&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">when&lt;/span> &lt;span style="color:#d88200">&amp;#34;010&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">E5&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Mi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">when&lt;/span> &lt;span style="color:#d88200">&amp;#34;011&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">F5&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Fa&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">when&lt;/span> &lt;span style="color:#d88200">&amp;#34;100&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">G5&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Sol&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">when&lt;/span> &lt;span style="color:#d88200">&amp;#34;101&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">A5&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- La&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">when&lt;/span> &lt;span style="color:#d88200">&amp;#34;110&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">B5&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Si&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">when&lt;/span> &lt;span style="color:#d88200">&amp;#34;111&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">C6&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Do-high&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">when&lt;/span> &lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">C5&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">end&lt;/span> &lt;span style="color:#00a8c8">case&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- Note duration counter&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">if&lt;/span> &lt;span style="color:#111">cnt&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">15&lt;/span>&lt;span style="color:#111">_000_000&lt;/span> &lt;span style="color:#00a8c8">then&lt;/span> &lt;span style="color:#75715e">-- ~3 seconds at 5 MHz&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">cnt&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">cnt&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">cnt&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">state&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">state&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Next note&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">end&lt;/span> &lt;span style="color:#00a8c8">if&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">-- Frequency generator&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">if&lt;/span> &lt;span style="color:#111">clk_div2&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#111">current_note&lt;/span> &lt;span style="color:#00a8c8">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">clk_div2&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">clk_div2&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">clk_div2&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#111">(&lt;/span>&lt;span style="color:#00a8c8">others&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#d88200">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#111">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">out_bit_tmp&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#00a8c8">not&lt;/span> &lt;span style="color:#111">out_bit_tmp&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#75715e">-- Toggle buzzer&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">end&lt;/span> &lt;span style="color:#00a8c8">if&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">end&lt;/span> &lt;span style="color:#00a8c8">if&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">end&lt;/span> &lt;span style="color:#00a8c8">if&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">end&lt;/span> &lt;span style="color:#00a8c8">process&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">end&lt;/span> &lt;span style="color:#75af00">Behavioral&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Code Explanation :&lt;/strong>&lt;br>
+The VHDL code above generates a square wave for a passive buzzer using an FPGA. A &lt;strong>clock prescaler&lt;/strong> reduces the 50 MHz input to 5 MHz. A &lt;strong>state machine&lt;/strong> cycles through eight musical notes (C5–C6), each defined by a fixed counter value. A &lt;strong>duration counter&lt;/strong> holds each note for ~3 seconds before advancing to the next. A &lt;strong>frequency counter&lt;/strong> toggles the buzzer output (&lt;code>out_bit&lt;/code>) at the note’s frequency: when the counter reaches the note’s value (e.g., 4780 for C5), it resets and flips the output. The system resets via an active-low &lt;code>rst&lt;/code> signal, initializing all counters and states. The design uses behavioral synthesis, with a single &lt;code>process&lt;/code> handling clock edges and state transitions. Each note’s frequency is calculated using the formula fn​=2Nfc​​, where N is the counter value.&lt;/p>
+&lt;h2 id="step-3-hardware-setup">&lt;strong>Step 3: Hardware Setup&lt;/strong>&lt;/h2>
+&lt;p>I discovered that there are four clock inputs on the schematic, so I assigned CLK3 (PIN_92).&lt;/p>
+&lt;p>&lt;img src="https://goiw111.github.io/images/N_2_1.png" alt="N_2_1">&lt;/p>
+&lt;p>and the builtin buzzer is connected to the PIN_94 as output as shown there.&lt;/p>
+&lt;p>&lt;img src="https://goiw111.github.io/images/N_2_2.png" alt="N_2_2">&lt;/p>
+&lt;p>and the fourth button (PIN_67) will be connected to the reset input.&lt;/p>
+&lt;p>&lt;img src="https://goiw111.github.io/images/N_2_3.png" alt="N_2_3">&lt;/p>
+&lt;h3 id="fpga-pin-connections">&lt;strong>FPGA Pin Connections&lt;/strong>&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>FPGA Pin&lt;/th>
+&lt;th>Component&lt;/th>
+&lt;th>Notes&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>PIN_92&lt;/strong>&lt;/td>
+&lt;td>50 MHz Clock&lt;/td>
+&lt;td>Onboard oscillator.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>PIN_94&lt;/strong>&lt;/td>
+&lt;td>Buzzer&lt;/td>
+&lt;td>Connect to a builtin buzzer.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>PIN_67&lt;/strong>&lt;/td>
+&lt;td>Reset Button&lt;/td>
+&lt;td>Active-low (pulled up to 3.3V).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Pin Assignment Using &lt;code>.qsf&lt;/code> File&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Tcl" data-lang="Tcl">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name FAMILY Cyclone
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name DEVICE EP1C3T144C8
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name TOP_LEVEL_ENTITY buzzer
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name ORIGINAL_QUARTUS_VERSION &lt;span style="color:#d88200">&amp;#34;13.0 SP1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name PROJECT_CREATION_TIME_DATE &lt;span style="color:#d88200">&amp;#34;23:28:34 APRIL 04, 2025&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name LAST_QUARTUS_VERSION &lt;span style="color:#d88200">&amp;#34;13.0 SP1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name PROJECT_OUTPUT_DIRECTORY output_files
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name ERROR_CHECK_FREQUENCY_DIVISOR &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name MIN_CORE_JUNCTION_TEMP &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name MAX_CORE_JUNCTION_TEMP &lt;span style="color:#ae81ff">85&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name VHDL_FILE test_2.vhd
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Assembler Assignments
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># =====================
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name AUTO_RESTART_CONFIGURATION OFF
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name RESERVE_ALL_UNUSED_PINS &lt;span style="color:#d88200">&amp;#34;AS INPUT TRI-STATED&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name STRATIX_DEVICE_IO_STANDARD &lt;span style="color:#d88200">&amp;#34;3.3-V LVTTL&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name LL_ROOT_REGION ON &lt;span style="color:#f92672">-&lt;/span>section_id &lt;span style="color:#d88200">&amp;#34;Root Region&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name LL_MEMBER_STATE LOCKED &lt;span style="color:#f92672">-&lt;/span>section_id &lt;span style="color:#d88200">&amp;#34;Root Region&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_global_assignment&lt;/span> &lt;span style="color:#f92672">-&lt;/span>name DEVICE_FILTER_PIN_COUNT &lt;span style="color:#ae81ff">144&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_location_assignment&lt;/span> PIN_92 &lt;span style="color:#f92672">-&lt;/span>to CLK
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_location_assignment&lt;/span> PIN_94 &lt;span style="color:#f92672">-&lt;/span>to out_bit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#111">set_location_assignment&lt;/span> PIN_67 &lt;span style="color:#f92672">-&lt;/span>to rst
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="step-4-program-the-fpga">&lt;strong>Step 4: Program the FPGA&lt;/strong>&lt;/h2>
+&lt;p>Compile the design and program the FPGA via JTAG using the generated &lt;code>.sof&lt;/code> file.&lt;/p>
+&lt;p>&lt;img src="https://goiw111.github.io/images/N_2_4.png" alt="N_2_4">&lt;/p>
+&lt;h3 id="conclusion-choose-your-fpga-wisely">Conclusion: Choose Your FPGA Wisely&lt;/h3>
+&lt;p>While this project was a valuable learning experience, I strongly advise against using obscure, outdated FPGAs like the Cyclone EP1C3T144C8. The challenges I faced highlight several key issues:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Outdated Tools&lt;/strong> : Quartus II 13.0 is outdated, lacking modern features and support. Modern alternatives like Quartus Prime Lite offer free, updated software with improved debugging tools and simulation capabilities.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Limited Documentation&lt;/strong> : Chinese-only documentation can be a significant barrier. Modern FPGA boards come with comprehensive English datasheets and active community support, making troubleshooting and learning much easier.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Incomplete Schematics&lt;/strong> : The lack of schematics and pinout information made hardware setup difficult. Contemporary FPGA development boards provide detailed documentation, ensuring a smoother integration process.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Legacy hardware certainly teaches resilience and problem-solving skills, but modern FPGAs offer significant advantages in terms of ease of use, support, and long-term sustainability. Investing in a well-documented, widely supported FPGA platform will save time, reduce frustration, and enhance your overall project experience. Choose wisely to ensure a successful and enjoyable development journey!&lt;/p></description></item></channel></rss>
