@@ -7,7 +7,7 @@ enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 googleAnalytics = "GTM-NDDLWNZT" ## or "G-xxxxxxxx" in Google Analytics v4, in hugo v0.82+
 hasCJKLanguage = true
-languageCode = "cn"
+#languageCode = "cn"
 theme = "hugo-theme-tokiwa"
 title = "My Blog"
 
