@@ -28,7 +28,7 @@
       <pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/n_4/</guid>
-      <description>&lt;h3 id=&#34;unlocking-the-dynamics-of-nonlinear-systems-a-guide-to-phase-plane-analysis&#34;&gt;&lt;strong&gt;Unlocking the Dynamics of Nonlinear Systems: A Guide to Phase-Plane Analysis&lt;/strong&gt;&lt;/h3&gt;
+      <description>&lt;h2 id=&#34;unlocking-the-dynamics-of-nonlinear-systems-a-guide-to-phase-plane-analysis&#34;&gt;&lt;strong&gt;Unlocking the Dynamics of Nonlinear Systems: A Guide to Phase-Plane Analysis&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;The world is full of systems that don&amp;rsquo;t behave in a simple, predictable way. These are known as nonlinear systems, and understanding them is crucial in fields ranging from physics and engineering to biology and economics. Unlike linear systems, where the output is directly proportional to the input, &lt;strong&gt;nonlinear systems&lt;/strong&gt; are governed by equations that contain terms that are not linear, such as quadratic terms ($x^2$), cubic terms ($x^3$), or trigonometric functions ($\sin x$). This nonlinearity leads to complex behaviors that cannot be fully described by simple superposition.&lt;/p&gt;
 &lt;p&gt;For example, a linear system with two stable states would always return to its equilibrium after a small disturbance. However, a nonlinear system can exhibit multiple stable and unstable states, chaotic behavior, or limit cycles where the system oscillates endlessly. This is why we need more sophisticated analytical tools.&lt;/p&gt;
 &lt;hr&gt;
@@ -334,8 +334,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;hold&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;off&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This numerical implementation provides quantitative validation of our theoretical analysis, demonstrating the correspondence between eigenvalue calculations and actual system behavior in the phase plane. The visualization clearly shows the predicted stable foci and unstable saddle points, confirming our linearization-based classification.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/N_4_5.png&#34; alt=&#34;product-jpeg-500x500&#34; title=&#34;Title here&#34;&gt;
-/&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/N_4_5.png&#34; alt=&#34;product-jpeg-500x500&#34; title=&#34;Title here&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
 </description>
     </item>
     
