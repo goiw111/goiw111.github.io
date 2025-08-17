@@ -324,8 +324,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;hold&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;off&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This numerical implementation provides quantitative validation of our theoretical analysis, demonstrating the correspondence between eigenvalue calculations and actual system behavior in the phase plane. The visualization clearly shows the predicted stable foci and unstable saddle points, confirming our linearization-based classification.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/N_4_5.png&#34; alt=&#34;product-jpeg-500x500&#34; title=&#34;Title here&#34;&gt;
-/&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/N_4_5.png&#34; alt=&#34;product-jpeg-500x500&#34; title=&#34;Title here&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
 </description>
     </item>
     
