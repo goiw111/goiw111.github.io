@@ -1,637 +1,187 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	
-	<title>My Blog  | Damped Pendulum: Equilibrium Points and Stability Analysis</title>
-	<meta name="viewport" content="width=device-width,minimum-scale=1">
-	<meta name="generator" content="Hugo 0.148.2">
-	
-	
-	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
-	
-
-	
-	
-	<link href="/dist/app.css" rel="stylesheet">
-	
-
-	
-	<link rel="stylesheet" href="/css/custom.css">
-	
-
-	
-	
-<link rel="shortcut icon" href="http://localhost:1313/img/favicon-32x32.png" type="image/png" />
-
-
-	
-
-	
-	
-	
-      <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-NDDLWNZT"></script>
-      <script>
-        var doNotTrack = false;
-        if ( false ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'GTM-NDDLWNZT');
-        }
-      </script>
-	
-	
-	
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-    integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
-    integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous">
-    </script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
-    integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);">
-    </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
-        });
-    });
-</script>
-
-	
-	
-	
-	
-</head>
-
-<body class="bg-gray-100 text-gray-700 font-sans">
-	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
-		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
-			<div
-				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-				
-<div>
-	<h2>
-		<a href="http://localhost:1313/" title="My Blog" class="heading font-cursive icon">My Blog</a>
-	</h2>
-</div>
-<h1 class="pt-2">Damped Pendulum: Equilibrium Points and Stability Analysis</h1>
-
-<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/nonlinear_dynamics'>Nonlinear_Dynamics</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/phase_plane_analysis'>Phase_Plane_Analysis</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/damped_pendulum'>Damped_Pendulum</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/stability_analysis'>Stability_Analysis</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/determinant_trace_plane'>Determinant_Trace_Plane</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2025-08-14T00:00:00Z">2025-8-14</time>
-</div>
-
-<hr />
-
-
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-
-<article>
-	<section class="mx-auto content">
-		<div class="c-rich-text"><h2 id="unlocking-the-dynamics-of-nonlinear-systems-a-guide-to-phase-plane-analysis"><strong>Unlocking the Dynamics of Nonlinear Systems: A Guide to Phase-Plane Analysis</strong></h2>
-<p>The world is full of systems that don&rsquo;t behave in a simple, predictable way. These are known as nonlinear systems, and understanding them is crucial in fields ranging from physics and engineering to biology and economics. Unlike linear systems, where the output is directly proportional to the input, <strong>nonlinear systems</strong> are governed by equations that contain terms that are not linear, such as quadratic terms ($x^2$), cubic terms ($x^3$), or trigonometric functions ($\sin x$). This nonlinearity leads to complex behaviors that cannot be fully described by simple superposition.</p>
-<p>For example, a linear system with two stable states would always return to its equilibrium after a small disturbance. However, a nonlinear system can exhibit multiple stable and unstable states, chaotic behavior, or limit cycles where the system oscillates endlessly. This is why we need more sophisticated analytical tools.</p>
-<hr>
-<h3 id="visualizing-system-behavior-with-phase-plane-analysis"><strong>Visualizing System Behavior with Phase-Plane Analysis</strong></h3>
-<p>When dealing with a second-order nonlinear system, one of the most powerful analytical methods is <strong>phase-plane analysis</strong>. It&rsquo;s a graphical technique that allows us to visualize the system&rsquo;s behavior without directly solving the complex differential equations. We transform the second-order differential equation into a system of two first-order equations by defining two state variables, such as position and velocity.</p>
-<p>By plotting these two variables against each other, we create a <strong>phase plane</strong>. The path a system takes over time, starting from a specific initial condition, is called a <strong>trajectory</strong> or <strong>orbit</strong>. The collection of all possible trajectories for all possible initial conditions forms the <strong>phase portrait</strong> of the system. This portrait reveals key dynamic features, such as stability, equilibrium points, and periodic oscillations.</p>
-<hr>
-<h3 id="the-damped-pendulum-a-classic-example"><strong>The Damped Pendulum: A Classic Example</strong></h3>
-<p>A simple pendulum is a classic example of a nonlinear system. Its motion is described by the second-order differential equation:</p>
-<p>$$
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>My Blog | Damped Pendulum: Equilibrium Points and Stability Analysis</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=generator content="Hugo 0.148.2"><meta name=ROBOTS content="INDEX, FOLLOW"><link href=/dist/app.css rel=stylesheet><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=https://goiw111.github.io/img/favicon-32x32.png type=image/png><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-NDDLWNZT"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","GTM-NDDLWNZT")}</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css integrity=sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js integrity=sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js integrity=sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh crossorigin=anonymous onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script></head><body class="bg-gray-100 text-gray-700 font-sans"><div class="p-6 sm:p-10 md:p-16 flex flex-wrap"><header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl"><div class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2"><div><h2><a href=https://goiw111.github.io/ title="My Blog" class="heading font-cursive icon">My Blog</a></h2></div><h1 class=pt-2>Damped Pendulum: Equilibrium Points and Stability Analysis</h1><div class="flex flex-wrap justify-end pt-2"><div class="md:flex-grow-0 font-light"><a class="post-taxonomy-tag text-eucalyptus-500" href=/tags/nonlinear_dynamics>Nonlinear_Dynamics</a>&nbsp;/
+<a class="post-taxonomy-tag text-eucalyptus-500" href=/tags/phase_plane_analysis>Phase_Plane_Analysis</a>&nbsp;/
+<a class="post-taxonomy-tag text-eucalyptus-500" href=/tags/damped_pendulum>Damped_Pendulum</a>&nbsp;/
+<a class="post-taxonomy-tag text-eucalyptus-500" href=/tags/stability_analysis>Stability_Analysis</a>&nbsp;/
+<a class="post-taxonomy-tag text-eucalyptus-500" href=/tags/determinant_trace_plane>Determinant_Trace_Plane</a></div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4" datetime=2025-08-14T00:00:00Z>2025-8-14</time></div><hr></div></header><main role=main class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4"><article><section class="mx-auto content"><div class=c-rich-text><h2 id=unlocking-the-dynamics-of-nonlinear-systems-a-guide-to-phase-plane-analysis><strong>Unlocking the Dynamics of Nonlinear Systems: A Guide to Phase-Plane Analysis</strong></h2><p>The world is full of systems that don&rsquo;t behave in a simple, predictable way. These are known as nonlinear systems, and understanding them is crucial in fields ranging from physics and engineering to biology and economics. Unlike linear systems, where the output is directly proportional to the input, <strong>nonlinear systems</strong> are governed by equations that contain terms that are not linear, such as quadratic terms ($x^2$), cubic terms ($x^3$), or trigonometric functions ($\sin x$). This nonlinearity leads to complex behaviors that cannot be fully described by simple superposition.</p><p>For example, a linear system with two stable states would always return to its equilibrium after a small disturbance. However, a nonlinear system can exhibit multiple stable and unstable states, chaotic behavior, or limit cycles where the system oscillates endlessly. This is why we need more sophisticated analytical tools.</p><hr><h3 id=visualizing-system-behavior-with-phase-plane-analysis><strong>Visualizing System Behavior with Phase-Plane Analysis</strong></h3><p>When dealing with a second-order nonlinear system, one of the most powerful analytical methods is <strong>phase-plane analysis</strong>. It&rsquo;s a graphical technique that allows us to visualize the system&rsquo;s behavior without directly solving the complex differential equations. We transform the second-order differential equation into a system of two first-order equations by defining two state variables, such as position and velocity.</p><p>By plotting these two variables against each other, we create a <strong>phase plane</strong>. The path a system takes over time, starting from a specific initial condition, is called a <strong>trajectory</strong> or <strong>orbit</strong>. The collection of all possible trajectories for all possible initial conditions forms the <strong>phase portrait</strong> of the system. This portrait reveals key dynamic features, such as stability, equilibrium points, and periodic oscillations.</p><hr><h3 id=the-damped-pendulum-a-classic-example><strong>The Damped Pendulum: A Classic Example</strong></h3><p>A simple pendulum is a classic example of a nonlinear system. Its motion is described by the second-order differential equation:</p><p>$$
 L,\ddot{\theta} + b,\dot{\theta} + g,\sin\theta = 0
-$$</p>
-<p>To analyze this system using the phase-plane method, we rewrite it as two first-order differential equations. Let the angular position be $x = \theta$ and the angular velocity be $y = \dot{\theta}$. Then:</p>
-<ol>
-<li>$\frac{dx}{dt} = y$</li>
-<li>$\frac{dy}{dt} = -\frac{b}{L}y - \frac{g}{L}\sin x$</li>
-</ol>
-<p>For simplicity, we define $\omega^2 = \frac{g}{L}$ and assume the damping coefficient is normalized. The equations become:</p>
-<ol>
-<li>$x&rsquo; = y$</li>
-<li>$y&rsquo; = -b,y - \omega^2 \sin x$</li>
-</ol>
-<hr>
-<h3 id="equilibrium-points-and-stability"><strong>Equilibrium Points and Stability</strong></h3>
-<p><strong>Equilibrium solutions</strong> (or <strong>fixed points</strong>) are points in the phase plane where the system is at rest. They are found by setting the time derivatives of both state variables to zero:</p>
-<p>$$
+$$</p><p>To analyze this system using the phase-plane method, we rewrite it as two first-order differential equations. Let the angular position be $x = \theta$ and the angular velocity be $y = \dot{\theta}$. Then:</p><ol><li>$\frac{dx}{dt} = y$</li><li>$\frac{dy}{dt} = -\frac{b}{L}y - \frac{g}{L}\sin x$</li></ol><p>For simplicity, we define $\omega^2 = \frac{g}{L}$ and assume the damping coefficient is normalized. The equations become:</p><ol><li>$x&rsquo; = y$</li><li>$y&rsquo; = -b,y - \omega^2 \sin x$</li></ol><hr><h3 id=equilibrium-points-and-stability><strong>Equilibrium Points and Stability</strong></h3><p><strong>Equilibrium solutions</strong> (or <strong>fixed points</strong>) are points in the phase plane where the system is at rest. They are found by setting the time derivatives of both state variables to zero:</p><p>$$
 x&rsquo; = y = 0
-$$</p>
-<p>$$
+$$</p><p>$$
 y&rsquo; = -b,y - \omega^2 \sin x = 0
-$$</p>
-<p>From these equations, we get $y = 0$ and $\sin x = 0$.
+$$</p><p>From these equations, we get $y = 0$ and $\sin x = 0$.
 The solutions for $x$ are $x = n\pi$, where $n$ is any integer.
-Thus, the pendulum has infinitely many fixed points at:</p>
-<p>$$
+Thus, the pendulum has infinitely many fixed points at:</p><p>$$
 (x, y) = (n\pi, 0)
-$$</p>
-<hr>
-<p>To determine their stability, we consider a small <strong>perturbation</strong> $\mathbf{x}=\mathbf{x}^{*}+\xi$, a tiny deviation from the equilibrium $\xi$, and analyze how the system responds.</p>
-<ul>
-<li>A <strong>stable</strong> fixed point returns to equilibrium after a small disturbance.</li>
-<li>An <strong>unstable</strong> fixed point moves away from equilibrium after a disturbance.</li>
-</ul>
-<p>The stability is determined by the <strong>eigenvalues</strong> $(\lambda)$ of the <strong>Jacobian matrix</strong> $J$ evaluated at the fixed point.</p>
-<p>The Jacobian for the system is:</p>
-<p>$$
+$$</p><hr><p>To determine their stability, we consider a small <strong>perturbation</strong> $\mathbf{x}=\mathbf{x}^{*}+\xi$, a tiny deviation from the equilibrium $\xi$, and analyze how the system responds.</p><ul><li>A <strong>stable</strong> fixed point returns to equilibrium after a small disturbance.</li><li>An <strong>unstable</strong> fixed point moves away from equilibrium after a disturbance.</li></ul><p>The stability is determined by the <strong>eigenvalues</strong> $(\lambda)$ of the <strong>Jacobian matrix</strong> $J$ evaluated at the fixed point.</p><p>The Jacobian for the system is:</p><p>$$
 J =
 \begin{bmatrix}
-0 &amp; 1 \\
--\omega^{2} \cos x &amp; -b
+0 & 1 \\
+-\omega^{2} \cos x & -b
 \end{bmatrix}
-$$</p>
-<p>From this matrix:</p>
-<p>$$
+$$</p><p>From this matrix:</p><p>$$
 \text{tr}(J) = 0 + (-b) = -b
-$$</p>
-<p>$$
+$$</p><p>$$
 \det(J) = (0)(-b) - (1)(-\omega^2 \cos x) = \omega^2 \cos x
-$$</p>
-<p>The eigenvalues are the solutions of the characteristic equation:</p>
-<p>$$
+$$</p><p>The eigenvalues are the solutions of the characteristic equation:</p><p>$$
 \lambda^2 - \text{tr}(J)\lambda + \det(J) = 0
-$$</p>
-<p>The solution of this equation is found using the quadratic formula,</p>
-<p>$$
+$$</p><p>The solution of this equation is found using the quadratic formula,</p><p>$$
 \lambda=\dfrac{1}{2}\left[-\operatorname{tr}(J) \pm \sqrt{\operatorname{tr}^{2}(J)-4 \operatorname{det}(J)}\right]\nonumber
-$$</p>
-<hr>
-<p><strong>Classification of fixed points:</strong></p>
-<ul>
-<li>
-<p><strong>Saddle Point</strong>: $\det(J) &lt; 0$
-Eigenvalues are real with opposite signs → always unstable.</p>
-</li>
-<li>
-<p><strong>Node</strong>: $\det(J) &gt; 0$ and $(\text{tr}(J))^2 - 4\det(J) &gt; 0$
-Eigenvalues are real with the same sign. Stable if $\text{tr}(J) &lt; 0$, unstable if $\text{tr}(J) &gt; 0$.</p>
-</li>
-<li>
-<p><strong>Focus (Spiral)</strong>: $\det(J) &gt; 0$ and $(\text{tr}(J))^2 - 4\det(J) &lt; 0$
-Eigenvalues are complex conjugates. Stable if $\text{tr}(J) &lt; 0$, unstable if $\text{tr}(J) &gt; 0$.</p>
-</li>
-<li>
-<p><strong>Center</strong>: $\det(J) &gt; 0$ and $\text{tr}(J) = 0$
-Eigenvalues are purely imaginary → neutrally stable (only occurs for undamped systems).</p>
-</li>
-</ul>
-<hr>
-<p>This stability classification can be visually represented in the <strong>determinant–trace plane</strong> $\operatorname{tr}^{2}(J)=4 \operatorname{det}(J) \nonumber$, where each region corresponds to a different type of fixed point.</p>
-<p><img src="/images/N_4_1.png" alt="product-jpeg-500x500" title="Title here"></p>
-<hr>
-<p>As we have found before, there is an infinite set of equilibrium points.</p>
-<p>$$
+$$</p><hr><p><strong>Classification of fixed points:</strong></p><ul><li><p><strong>Saddle Point</strong>: $\det(J) &lt; 0$
+Eigenvalues are real with opposite signs → always unstable.</p></li><li><p><strong>Node</strong>: $\det(J) > 0$ and $(\text{tr}(J))^2 - 4\det(J) > 0$
+Eigenvalues are real with the same sign. Stable if $\text{tr}(J) &lt; 0$, unstable if $\text{tr}(J) > 0$.</p></li><li><p><strong>Focus (Spiral)</strong>: $\det(J) > 0$ and $(\text{tr}(J))^2 - 4\det(J) &lt; 0$
+Eigenvalues are complex conjugates. Stable if $\text{tr}(J) &lt; 0$, unstable if $\text{tr}(J) > 0$.</p></li><li><p><strong>Center</strong>: $\det(J) > 0$ and $\text{tr}(J) = 0$
+Eigenvalues are purely imaginary → neutrally stable (only occurs for undamped systems).</p></li></ul><hr><p>This stability classification can be visually represented in the <strong>determinant–trace plane</strong> $\operatorname{tr}^{2}(J)=4 \operatorname{det}(J) \nonumber$, where each region corresponds to a different type of fixed point.</p><p><img src=/images/N_4_1.png alt=product-jpeg-500x500 title="Title here"></p><hr><p>As we have found before, there is an infinite set of equilibrium points.</p><p>$$
 (x, y) = (n\pi, 0), \quad n = 0, \pm 1, \pm 2, \dots
-$$</p>
-<p>The Jacobian matrix is:</p>
-<p>$$
+$$</p><p>The Jacobian matrix is:</p><p>$$
 J(x, y) =
 \begin{bmatrix}
-0 &amp; 1 \\
--\omega^2 \cos x &amp; -b
+0 & 1 \\
+-\omega^2 \cos x & -b
 \end{bmatrix}
-$$</p>
-<p>Evaluating at $(n\pi, 0)$:</p>
-<p>$$
+$$</p><p>Evaluating at $(n\pi, 0)$:</p><p>$$
 J(n\pi, 0) =
 \begin{bmatrix}
-0 &amp; 1 \\
-(-1)^{n+1}\omega^2 &amp; -b
+0 & 1 \\
+(-1)^{n+1}\omega^2 & -b
 \end{bmatrix}
-$$</p>
-<p>The characteristic equation is:</p>
-<p>$$
+$$</p><p>The characteristic equation is:</p><p>$$
 \lambda^2 + b,\lambda + (-1)^{n+1} \omega^2 = 0
-$$</p>
-<hr>
-<h4 id="case-1-n-even"><strong>Case 1: $n$ even</strong></h4>
-<p>Here $(-1)^{n+1} = -1$, so:</p>
-<p>$$
+$$</p><hr><h4 id=case-1-n-even><strong>Case 1: $n$ even</strong></h4><p>Here $(-1)^{n+1} = -1$, so:</p><p>$$
 \lambda^2 + b,\lambda + \omega^2 = 0
-$$</p>
-<p>The eigenvalues are:</p>
-<p>$$
+$$</p><p>The eigenvalues are:</p><p>$$
 \lambda = \frac{-b \pm \sqrt{b^2 - 4\omega^2}}{2}
-$$</p>
-<ul>
-<li>If $b^2 &lt; 4\omega^2$: complex conjugates with negative real part → <strong>stable focus</strong>.</li>
-<li>If $b = 0$: purely imaginary eigenvalues → <strong>center</strong> (undamped).</li>
-</ul>
-<p><img src="/images/N_4_4.png" alt="product-jpeg-500x500" title="Title here"></p>
-<h4 id="case-2-n-odd"><strong>Case 2: $n$ odd</strong></h4>
-<p>Here $(-1)^{n+1} = +1$, so:</p>
-<p>$$
+$$</p><ul><li>If $b^2 &lt; 4\omega^2$: complex conjugates with negative real part → <strong>stable focus</strong>.</li><li>If $b = 0$: purely imaginary eigenvalues → <strong>center</strong> (undamped).</li></ul><p><img src=/images/N_4_4.png alt=product-jpeg-500x500 title="Title here"></p><h4 id=case-2-n-odd><strong>Case 2: $n$ odd</strong></h4><p>Here $(-1)^{n+1} = +1$, so:</p><p>$$
 \lambda^2 + b \lambda - \omega^2 = 0
-$$</p>
-<p>The eigenvalues are:</p>
-<p>$$
+$$</p><p>The eigenvalues are:</p><p>$$
 \lambda = \frac{-b \pm \sqrt{b^2 + 4\omega^2}}{2}
-$$</p>
-<p>One eigenvalue is positive, the other negative → <strong>saddle point</strong> (always unstable).
-If $b = 0$, the eigenvalues reduce to $\pm\omega$.</p>
-<hr>
-<p>This means:</p>
-<ul>
-<li>Even $n$ → <strong>stable foci</strong> (with damping) or <strong>centers</strong> (without damping).</li>
-<li>Odd $n$ → <strong>unstable saddles</strong>.</li>
-</ul>
-<p>phase plane for the undamped nonlinear pendulum:</p>
-<p><img src="/images/N_4_2.png" alt="product-jpeg-500x500" title="Title here"></p>
-<p>phase plane for the damped nonlinear pendulum:</p>
-<p><img src="/images/N_4_3.png" alt="product-jpeg-500x500" title="Title here"></p>
-<p>These classifications can be represented in the determinant–trace plane, where the fixed points fall into the corresponding regions depending on $\det(J) = \omega^2 \cos(n\pi)$ and $\text{tr}(J) = -b$.</p>
-<hr>
-<h3 id="matlab-implementation-and-numerical-verification">MATLAB Implementation and Numerical Verification</h3>
-<p>To verify our analytical findings and visualize the phase portrait behavior, we implement the damped pendulum system in MATLAB. This numerical approach allows us to confirm the theoretical predictions about equilibrium point stability and trajectory behavior.</p>
-<h4 id="system-implementation">System Implementation</h4>
-<p>The nonlinear damped pendulum system is implemented using the state-space representation:
+$$</p><p>One eigenvalue is positive, the other negative → <strong>saddle point</strong> (always unstable).
+If $b = 0$, the eigenvalues reduce to $\pm\omega$.</p><hr><p>This means:</p><ul><li>Even $n$ → <strong>stable foci</strong> (with damping) or <strong>centers</strong> (without damping).</li><li>Odd $n$ → <strong>unstable saddles</strong>.</li></ul><p>phase plane for the undamped nonlinear pendulum:</p><p><img src=/images/N_4_2.png alt=product-jpeg-500x500 title="Title here"></p><p>phase plane for the damped nonlinear pendulum:</p><p><img src=/images/N_4_3.png alt=product-jpeg-500x500 title="Title here"></p><p>These classifications can be represented in the determinant–trace plane, where the fixed points fall into the corresponding regions depending on $\det(J) = \omega^2 \cos(n\pi)$ and $\text{tr}(J) = -b$.</p><hr><h3 id=matlab-implementation-and-numerical-verification>MATLAB Implementation and Numerical Verification</h3><p>To verify our analytical findings and visualize the phase portrait behavior, we implement the damped pendulum system in MATLAB. This numerical approach allows us to confirm the theoretical predictions about equilibrium point stability and trajectory behavior.</p><h4 id=system-implementation>System Implementation</h4><p>The nonlinear damped pendulum system is implemented using the state-space representation:
 $$
-\dot{\mathbf{x}} = \begin{bmatrix} \dot{\theta}  \\ \ddot{\theta} \end{bmatrix} = \begin{bmatrix} \theta_d  \\ -\omega^2 \sin \theta - b \theta_d \end{bmatrix}
-$$</p>
-<p>where $\omega^2 = g/L$ and the state vector is $\mathbf{x} = [\theta, \theta_d]^T$.</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-matlab" data-lang="matlab"><span style="display:flex;"><span><span style="color:#75715e">%% System parameters matching theoretical analysis</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">g</span> <span style="color:#111">=</span> <span style="color:#ae81ff">9.81</span><span style="color:#111">;</span> <span style="color:#75715e">% gravity (m/s^2)</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">L</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1.0</span><span style="color:#111">;</span> <span style="color:#75715e">% pendulum length (m)</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">b</span> <span style="color:#111">=</span> <span style="color:#ae81ff">0.5</span><span style="color:#111">;</span> <span style="color:#75715e">% damping coefficient (1/s)</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">omega_squared</span> <span style="color:#111">=</span> <span style="color:#111">g</span><span style="color:#f92672">/</span><span style="color:#111">L</span><span style="color:#111">;</span> <span style="color:#75715e">% natural frequency squared</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% Pendulum ODE system</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">% State: y(1) = theta, y(2) = theta_dot</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">pendulum</span> <span style="color:#111">=</span> <span style="color:#111">@(</span><span style="color:#111">t</span><span style="color:#111">,</span><span style="color:#111">y</span><span style="color:#111">)</span> <span style="color:#111">[</span><span style="color:#111">y</span><span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#111">);</span> <span style="color:#f92672">-</span><span style="color:#111">omega_squared</span><span style="color:#f92672">*</span><span style="color:#111">sin</span><span style="color:#111">(</span><span style="color:#111">y</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">))</span> <span style="color:#f92672">-</span> <span style="color:#111">b</span><span style="color:#f92672">*</span><span style="color:#111">y</span><span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#111">)];</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% Vector field computation</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">% For phase plane: U = dx/dt, V = dy/dt</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">U</span> <span style="color:#111">=</span> <span style="color:#111">THDOT</span><span style="color:#111">;</span> <span style="color:#75715e">% d(theta)/dt = theta_dot</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">V</span> <span style="color:#111">=</span> <span style="color:#f92672">-</span><span style="color:#111">omega_squared</span><span style="color:#f92672">*</span><span style="color:#111">sin</span><span style="color:#111">(</span><span style="color:#111">TH</span><span style="color:#111">)</span> <span style="color:#f92672">-</span> <span style="color:#111">b</span><span style="color:#f92672">*</span><span style="color:#111">THDOT</span><span style="color:#111">;</span> <span style="color:#75715e">% d(theta_dot)/dt from our ODE</span>
-</span></span></code></pre></div><h4 id="equilibrium-point-verification">Equilibrium Point Verification</h4>
-<p>Our MATLAB code systematically identifies and classifies all equilibrium points according to our theoretical analysis:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-matlab" data-lang="matlab"><span style="display:flex;"><span><span style="color:#75715e">%% Theoretical equilibrium points: (n*pi, 0)</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">stable_points</span> <span style="color:#111">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">4</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">];</span> <span style="color:#75715e">% n even</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">unstable_points</span> <span style="color:#111">=</span> <span style="color:#111">[</span><span style="color:#f92672">-</span><span style="color:#ae81ff">3</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">];</span> <span style="color:#75715e">% n odd</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">% Verify stability through eigenvalue analysis</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">omega_n</span> <span style="color:#111">=</span> <span style="color:#111">sqrt</span><span style="color:#111">(</span><span style="color:#111">omega_squared</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">zeta</span> <span style="color:#111">=</span> <span style="color:#111">b</span><span style="color:#f92672">/</span><span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#111">omega_n</span><span style="color:#111">);</span> <span style="color:#75715e">% damping ratio</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#111">fprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Damping ratio ζ = %.3f\n&#39;</span><span style="color:#111">,</span> <span style="color:#111">zeta</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#00a8c8">if</span> <span style="color:#111">zeta</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">fprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;b² &lt; 4ω²: Stable foci (underdamped oscillation)\n&#39;</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#00a8c8">else</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">fprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;b² ≥ 4ω²: Stable nodes (overdamped)\n&#39;</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#00a8c8">end</span>
-</span></span></code></pre></div><h4 id="trajectory-analysis-and-phase-portrait-generation">Trajectory Analysis and Phase Portrait Generation</h4>
-<p>The implementation generates multiple trajectories from strategically chosen initial conditions to demonstrate different behavioral regimes:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-matlab" data-lang="matlab"><span style="display:flex;"><span><span style="color:#75715e">%% Initial conditions for comprehensive analysis</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">initial_conditions</span> <span style="color:#111">=</span> <span style="color:#111">[</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0.5</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>     <span style="color:#75715e">% Small oscillation → stable focus behavior</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1.5</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>     <span style="color:#75715e">% Larger oscillation → spiral to origin</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">3.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>     <span style="color:#75715e">% Near unstable point → approach to stable equilibrium</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.1</span><span style="color:#111">;</span>    <span style="color:#75715e">% Near saddle point → separatrix behavior</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0.1</span><span style="color:#111">;</span>   <span style="color:#75715e">% Opposite side of saddle → different separatrix</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">;</span>       <span style="color:#75715e">% High energy → large phase space exploration</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#111">;</span>      <span style="color:#75715e">% Negative velocity → clockwise motion</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">];</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% Solve and visualize trajectories</span>
-</span></span><span style="display:flex;"><span><span style="color:#00a8c8">for</span> <span style="color:#111">i</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">:</span><span style="color:#111">size</span><span style="color:#111">(</span><span style="color:#111">initial_conditions</span><span style="color:#111">,</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">y0</span> <span style="color:#111">=</span> <span style="color:#111">initial_conditions</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">,:)</span><span style="color:#f92672">&#39;</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">[</span><span style="color:#111">ts</span><span style="color:#111">,</span> <span style="color:#111">ys</span><span style="color:#111">]</span> <span style="color:#111">=</span> <span style="color:#111">ode45</span><span style="color:#111">(</span><span style="color:#111">pendulum</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#ae81ff">15</span><span style="color:#111">],</span> <span style="color:#111">y0</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">plot</span><span style="color:#111">(</span><span style="color:#111">ys</span><span style="color:#111">(:,</span><span style="color:#ae81ff">1</span><span style="color:#111">),</span> <span style="color:#111">ys</span><span style="color:#111">(:,</span><span style="color:#ae81ff">2</span><span style="color:#111">),</span> <span style="color:#d88200">&#39;LineWidth&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">1.8</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#00a8c8">end</span>
-</span></span></code></pre></div><h4 id="vector-field-visualization">Vector Field Visualization</h4>
-<p>The normalized vector field clearly shows the flow directions predicted by our linearization analysis:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-matlab" data-lang="matlab"><span style="display:flex;"><span><span style="color:#75715e">%% Normalized vector field for clear flow visualization</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">len</span> <span style="color:#111">=</span> <span style="color:#111">sqrt</span><span style="color:#111">(</span><span style="color:#111">U</span><span style="color:#f92672">.^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#111">V</span><span style="color:#f92672">.^</span><span style="color:#ae81ff">2</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">len</span><span style="color:#111">(</span><span style="color:#111">len</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span> <span style="color:#75715e">% avoid singularities</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">U_norm</span> <span style="color:#111">=</span> <span style="color:#111">U</span><span style="color:#f92672">./</span><span style="color:#111">len</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">V_norm</span> <span style="color:#111">=</span> <span style="color:#111">V</span><span style="color:#f92672">./</span><span style="color:#111">len</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">quiver</span><span style="color:#111">(</span><span style="color:#111">TH</span><span style="color:#111">,</span> <span style="color:#111">THDOT</span><span style="color:#111">,</span> <span style="color:#111">U_norm</span><span style="color:#111">,</span> <span style="color:#111">V_norm</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.6</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;r&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;LineWidth&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.8</span><span style="color:#111">);</span>
-</span></span></code></pre></div><h4 id="numerical-results-and-theoretical-validation">Numerical Results and Theoretical Validation</h4>
-<p>The MATLAB simulation confirms our analytical predictions:</p>
-<p><strong>For $n$ even (stable equilibria at $\theta = 0, \pm 2\pi, \pm 4\pi, &hellip;$):</strong></p>
-<ul>
-<li>Trajectories spiral inward to these points</li>
-<li>Damping ratio $\zeta = \frac{b}{2\omega} = \frac{0.5}{2\sqrt{9.81}} \approx 0.080 &lt; 1$</li>
-<li>Confirms underdamped behavior with stable foci</li>
-</ul>
-<p><strong>For $n$ odd (saddle points at $\theta = \pm\pi, \pm 3\pi, &hellip;$):</strong></p>
-<ul>
-<li>Trajectories diverge from these points along unstable manifolds</li>
-<li>Eigenvalues: $\lambda = \frac{-b \pm \sqrt{b^2 + 4\omega^2}}{2} = \frac{-0.5 \pm \sqrt{0.25 + 39.24}}{2}$</li>
-<li>One positive, one negative eigenvalue confirms saddle point behavior</li>
-</ul>
-<h4 id="complete-matlab-implementation">Complete MATLAB Implementation</h4>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-matlab" data-lang="matlab"><span style="display:flex;"><span><span style="color:#75715e">%% Enhanced Phase Portrait Analysis</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">figure</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Position&#39;</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#ae81ff">100</span><span style="color:#111">,</span> <span style="color:#ae81ff">100</span><span style="color:#111">,</span> <span style="color:#ae81ff">1200</span><span style="color:#111">,</span> <span style="color:#ae81ff">900</span><span style="color:#111">]);</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">hold</span> <span style="color:#111">on</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% System parameters and theoretical calculations</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">g</span> <span style="color:#111">=</span> <span style="color:#ae81ff">9.81</span><span style="color:#111">;</span> <span style="color:#111">L</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1.0</span><span style="color:#111">;</span> <span style="color:#111">b</span> <span style="color:#111">=</span> <span style="color:#ae81ff">0.5</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">omega</span> <span style="color:#111">=</span> <span style="color:#111">sqrt</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#f92672">/</span><span style="color:#111">L</span><span style="color:#111">);</span> <span style="color:#111">zeta</span> <span style="color:#111">=</span> <span style="color:#111">b</span><span style="color:#f92672">/</span><span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#111">omega</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% Vector field grid</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">theta_range</span> <span style="color:#111">=</span> <span style="color:#f92672">-</span><span style="color:#111">pi</span><span style="color:#111">:</span><span style="color:#111">pi</span><span style="color:#f92672">/</span><span style="color:#ae81ff">6</span><span style="color:#111">:</span><span style="color:#ae81ff">4</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">theta_dot_range</span> <span style="color:#111">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">6</span><span style="color:#111">:</span><span style="color:#ae81ff">0.5</span><span style="color:#111">:</span><span style="color:#ae81ff">6</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">[</span><span style="color:#111">TH</span><span style="color:#111">,</span> <span style="color:#111">THDOT</span><span style="color:#111">]</span> <span style="color:#111">=</span> <span style="color:#111">meshgrid</span><span style="color:#111">(</span><span style="color:#111">theta_range</span><span style="color:#111">,</span> <span style="color:#111">theta_dot_range</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% Flow field computation</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">U</span> <span style="color:#111">=</span> <span style="color:#111">THDOT</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">V</span> <span style="color:#111">=</span> <span style="color:#f92672">-</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#f92672">/</span><span style="color:#111">L</span><span style="color:#111">)</span><span style="color:#f92672">*</span><span style="color:#111">sin</span><span style="color:#111">(</span><span style="color:#111">TH</span><span style="color:#111">)</span> <span style="color:#f92672">-</span> <span style="color:#111">b</span><span style="color:#f92672">*</span><span style="color:#111">THDOT</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">len</span> <span style="color:#111">=</span> <span style="color:#111">sqrt</span><span style="color:#111">(</span><span style="color:#111">U</span><span style="color:#f92672">.^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#111">V</span><span style="color:#f92672">.^</span><span style="color:#ae81ff">2</span><span style="color:#111">);</span> <span style="color:#111">len</span><span style="color:#111">(</span><span style="color:#111">len</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">quiver</span><span style="color:#111">(</span><span style="color:#111">TH</span><span style="color:#111">,</span> <span style="color:#111">THDOT</span><span style="color:#111">,</span> <span style="color:#111">U</span><span style="color:#f92672">./</span><span style="color:#111">len</span><span style="color:#111">,</span> <span style="color:#111">V</span><span style="color:#f92672">./</span><span style="color:#111">len</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.6</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;r&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;LineWidth&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.8</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% Multiple trajectory integration</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">initial_conditions</span> <span style="color:#111">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">0.5</span><span style="color:#111">,</span><span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#ae81ff">1.5</span><span style="color:#111">,</span><span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#ae81ff">3.0</span><span style="color:#111">,</span><span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">pi</span><span style="color:#111">,</span><span style="color:#ae81ff">0.1</span><span style="color:#111">;</span> <span style="color:#111">pi</span><span style="color:#111">,</span><span style="color:#f92672">-</span><span style="color:#ae81ff">0.1</span><span style="color:#111">;</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">;</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#111">];</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">colors</span> <span style="color:#111">=</span> <span style="color:#111">lines</span><span style="color:#111">(</span><span style="color:#111">size</span><span style="color:#111">(</span><span style="color:#111">initial_conditions</span><span style="color:#111">,</span><span style="color:#ae81ff">1</span><span style="color:#111">));</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00a8c8">for</span> <span style="color:#111">i</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">:</span><span style="color:#111">size</span><span style="color:#111">(</span><span style="color:#111">initial_conditions</span><span style="color:#111">,</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">[</span><span style="color:#111">ts</span><span style="color:#111">,</span> <span style="color:#111">ys</span><span style="color:#111">]</span> <span style="color:#111">=</span> <span style="color:#111">ode45</span><span style="color:#111">(@(</span><span style="color:#111">t</span><span style="color:#111">,</span><span style="color:#111">y</span><span style="color:#111">)</span> <span style="color:#111">[</span><span style="color:#111">y</span><span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#111">);</span> <span style="color:#f92672">-</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#f92672">/</span><span style="color:#111">L</span><span style="color:#111">)</span><span style="color:#f92672">*</span><span style="color:#111">sin</span><span style="color:#111">(</span><span style="color:#111">y</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">))</span> <span style="color:#f92672">-</span> <span style="color:#111">b</span><span style="color:#f92672">*</span><span style="color:#111">y</span><span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#111">)],</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>                     <span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#ae81ff">15</span><span style="color:#111">],</span> <span style="color:#111">initial_conditions</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">,:)</span><span style="color:#f92672">&#39;</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">plot</span><span style="color:#111">(</span><span style="color:#111">ys</span><span style="color:#111">(:,</span><span style="color:#ae81ff">1</span><span style="color:#111">),</span> <span style="color:#111">ys</span><span style="color:#111">(:,</span><span style="color:#ae81ff">2</span><span style="color:#111">),</span> <span style="color:#d88200">&#39;Color&#39;</span><span style="color:#111">,</span> <span style="color:#111">colors</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">,:),</span> <span style="color:#d88200">&#39;LineWidth&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">1.8</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">plot</span><span style="color:#111">(</span><span style="color:#111">initial_conditions</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">,</span><span style="color:#ae81ff">1</span><span style="color:#111">),</span> <span style="color:#111">initial_conditions</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">),</span> <span style="color:#d88200">&#39;o&#39;</span><span style="color:#111">,</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>         <span style="color:#d88200">&#39;MarkerSize&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">8</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;MarkerFaceColor&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;green&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;MarkerEdgeColor&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;black&#39;</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#00a8c8">end</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% Mark equilibrium points according to theory</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">stable_eq</span> <span style="color:#111">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">];</span> <span style="color:#75715e">% n even → stable foci</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">unstable_eq</span> <span style="color:#111">=</span> <span style="color:#111">[</span><span style="color:#f92672">-</span><span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#111">pi</span><span style="color:#111">];</span> <span style="color:#75715e">% n odd → saddle points</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#111">plot</span><span style="color:#111">(</span><span style="color:#111">stable_eq</span><span style="color:#111">,</span> <span style="color:#111">zeros</span><span style="color:#111">(</span><span style="color:#111">size</span><span style="color:#111">(</span><span style="color:#111">stable_eq</span><span style="color:#111">)),</span> <span style="color:#d88200">&#39;o&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;MarkerSize&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">12</span><span style="color:#111">,</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#d88200">&#39;MarkerFaceColor&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;blue&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;MarkerEdgeColor&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;black&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;LineWidth&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">plot</span><span style="color:#111">(</span><span style="color:#111">unstable_eq</span><span style="color:#111">,</span> <span style="color:#111">zeros</span><span style="color:#111">(</span><span style="color:#111">size</span><span style="color:#111">(</span><span style="color:#111">unstable_eq</span><span style="color:#111">)),</span> <span style="color:#d88200">&#39;s&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;MarkerSize&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">12</span><span style="color:#111">,</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#d88200">&#39;MarkerFaceColor&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;red&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;MarkerEdgeColor&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;black&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;LineWidth&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% Formatting and theoretical annotation</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">xlabel</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Angular Position θ (radians)&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FontSize&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">14</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FontWeight&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;bold&#39;</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">ylabel</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Angular Velocity dθ/dt (rad/s)&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FontSize&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">14</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FontWeight&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;bold&#39;</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">title</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Damped Nonlinear Pendulum: Numerical Verification of Analytical Results&#39;</span><span style="color:#111">,</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#d88200">&#39;FontSize&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">16</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FontWeight&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;bold&#39;</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#111">xlim</span><span style="color:#111">([</span><span style="color:#f92672">-</span><span style="color:#111">pi</span><span style="color:#111">,</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">]);</span> <span style="color:#111">ylim</span><span style="color:#111">([</span><span style="color:#f92672">-</span><span style="color:#ae81ff">6</span><span style="color:#111">,</span> <span style="color:#ae81ff">6</span><span style="color:#111">]);</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">set</span><span style="color:#111">(</span><span style="color:#111">gca</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;XTick&#39;</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#f92672">-</span><span style="color:#111">pi</span><span style="color:#111">:</span><span style="color:#111">pi</span><span style="color:#111">:</span><span style="color:#ae81ff">4</span><span style="color:#f92672">*</span><span style="color:#111">pi</span><span style="color:#111">],</span> <span style="color:#d88200">&#39;XTickLabel&#39;</span><span style="color:#111">,</span> <span style="color:#111">{</span><span style="color:#d88200">&#39;-π&#39;</span><span style="color:#111">,</span><span style="color:#d88200">&#39;0&#39;</span><span style="color:#111">,</span><span style="color:#d88200">&#39;π&#39;</span><span style="color:#111">,</span><span style="color:#d88200">&#39;2π&#39;</span><span style="color:#111">,</span><span style="color:#d88200">&#39;3π&#39;</span><span style="color:#111">,</span><span style="color:#d88200">&#39;4π&#39;</span><span style="color:#111">});</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">grid</span> <span style="color:#111">on</span><span style="color:#111">;</span> <span style="color:#111">set</span><span style="color:#111">(</span><span style="color:#111">gca</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;GridAlpha&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.3</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FontSize&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">12</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">%% Theoretical validation box</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">dim</span> <span style="color:#111">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">0.02</span> <span style="color:#ae81ff">0.68</span> <span style="color:#ae81ff">0.35</span> <span style="color:#ae81ff">0.28</span><span style="color:#111">];</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">str</span> <span style="color:#111">=</span> <span style="color:#111">{</span><span style="color:#111">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;**Theoretical Validation:**&#39;</span><span style="color:#111">),</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#111">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;ω₀ = %.3f rad/s, ζ = %.3f&#39;</span><span style="color:#111">,</span> <span style="color:#111">omega</span><span style="color:#111">,</span> <span style="color:#111">zeta</span><span style="color:#111">),</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#111">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Condition: b² = %.3f &lt; 4ω² = %.3f ✓&#39;</span><span style="color:#111">,</span> <span style="color:#111">b</span>^<span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">*</span><span style="color:#111">omega</span>^<span style="color:#ae81ff">2</span><span style="color:#111">),</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#111">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;&#39;</span><span style="color:#111">),</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#111">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;**Equilibrium Classification:**&#39;</span><span style="color:#111">),</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#111">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;• n even (θ = 0, ±2π, ...): Stable foci&#39;</span><span style="color:#111">),</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#111">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;  λ = %.3f ± %.3fi&#39;</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#111">b</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#111">omega</span><span style="color:#f92672">*</span><span style="color:#111">sqrt</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#111">zeta</span>^<span style="color:#ae81ff">2</span><span style="color:#111">)),</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#111">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;• n odd (θ = ±π, ±3π, ...): Saddle points&#39;</span><span style="color:#111">),</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#111">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#39;  λ = %.3f, %.3f&#39;</span><span style="color:#111">,</span> <span style="color:#111">(</span><span style="color:#f92672">-</span><span style="color:#111">b</span><span style="color:#f92672">+</span><span style="color:#111">sqrt</span><span style="color:#111">(</span><span style="color:#111">b</span>^<span style="color:#ae81ff">2</span><span style="color:#f92672">+</span><span style="color:#ae81ff">4</span><span style="color:#f92672">*</span><span style="color:#111">omega</span>^<span style="color:#ae81ff">2</span><span style="color:#111">))</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#111">(</span><span style="color:#f92672">-</span><span style="color:#111">b</span><span style="color:#f92672">-</span><span style="color:#111">sqrt</span><span style="color:#111">(</span><span style="color:#111">b</span>^<span style="color:#ae81ff">2</span><span style="color:#f92672">+</span><span style="color:#ae81ff">4</span><span style="color:#f92672">*</span><span style="color:#111">omega</span>^<span style="color:#ae81ff">2</span><span style="color:#111">))</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#111">)};</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#111">annotation</span><span style="color:#111">(</span><span style="color:#d88200">&#39;textbox&#39;</span><span style="color:#111">,</span> <span style="color:#111">dim</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;String&#39;</span><span style="color:#111">,</span> <span style="color:#111">str</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FitBoxToText&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;on&#39;</span><span style="color:#111">,</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#d88200">&#39;BackgroundColor&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;yellow&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FaceAlpha&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.95</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FontSize&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#d88200">&#39;EdgeColor&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;black&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;LineWidth&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#111">legend</span><span style="color:#111">({</span><span style="color:#d88200">&#39;Vector Field&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;Trajectories&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;Initial Conditions&#39;</span><span style="color:#111">,</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#d88200">&#39;Stable Foci (n even)&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;Saddle Points (n odd)&#39;</span><span style="color:#111">},</span> <span style="color:#75715e">...</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#d88200">&#39;Location&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;northeast&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;FontSize&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">11</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#111">hold</span> <span style="color:#111">off</span><span style="color:#111">;</span>
-</span></span></code></pre></div><p>This numerical implementation provides quantitative validation of our theoretical analysis, demonstrating the correspondence between eigenvalue calculations and actual system behavior in the phase plane. The visualization clearly shows the predicted stable foci and unstable saddle points, confirming our linearization-based classification.</p>
-<p><img src="/images/N_4_5.png" alt="product-jpeg-500x500" title="Title here"></p>
-<hr>
-</div>
-	</section>
-
-
-</article>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-	<div class="md:max-w-xs  flex flex-col md:items-end">
-	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
-	
-	
-	<li class="px-1 md:px-0">
-		<a href="/posts/" title="Posts page" 
-			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
-			Posts
-		</a>
-	</li>
-	
-	<li class="px-1 md:px-0">
-		<a href="/categories/" title="Categories page" >
-			Categories
-		</a>
-	</li>
-	
-	<li class="px-1 md:px-0">
-		<a href="/tags/" title="Tags page" >
-			Tags
-		</a>
-	</li>
-	
-	<li class="px-1 md:px-0">
-		<a href="/about/" title="About page" >
-			About
-		</a>
-	</li>
-	
-	
-	
-	
-	<div id="fastSearch" class="m-0">
-		<input id="searchInput" type="text" size=10 
-			class="bg-gray-100 focus:outline-none border-b border-gray-100 focus:border-eucalyptus-300 md:text-right
-			placeholder-java-500 min-w-0 max-w-xxxs"
-			placeholder="search" />
-		<ul id="searchResults" class="bg-gray-200 px-2 divide-y divide-gray-400">
-		</ul>
-	</div>
-	
-</ul>
-	
-
-<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
-	
-	
-	<a href='https://github.com/goiw111' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
-		aria-label="follow on github——Opens in a new window">
-		
-		<div class="fill-current h-8 w-8">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g>
-        <path fill="none" d="M0 0h24v24H0z"/>
-        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
-    </g>
-</svg>
-
-		</div>
-	</a>
-	
-	
-	
-	<a href='https://www.instagram.com/sohayl.ch' target="_blank" class="instagram icon pl-1 text-eucalyptus-400 hover:text-java-400" title="instagram link" rel="noopener"
-		aria-label="follow on instagram——Opens in a new window">
-		
-		<div class="fill-current h-8 w-8">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g>
-        <path fill="none" d="M0 0h24v24H0z"/>
-        <path fill-rule="nonzero" d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0-2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.25a1.25 1.25 0 0 1-2.5 0 1.25 1.25 0 0 1 2.5 0zM12 4c-2.474 0-2.878.007-4.029.058-.784.037-1.31.142-1.798.332-.434.168-.747.369-1.08.703a2.89 2.89 0 0 0-.704 1.08c-.19.49-.295 1.015-.331 1.798C4.006 9.075 4 9.461 4 12c0 2.474.007 2.878.058 4.029.037.783.142 1.31.331 1.797.17.435.37.748.702 1.08.337.336.65.537 1.08.703.494.191 1.02.297 1.8.333C9.075 19.994 9.461 20 12 20c2.474 0 2.878-.007 4.029-.058.782-.037 1.309-.142 1.797-.331.433-.169.748-.37 1.08-.702.337-.337.538-.65.704-1.08.19-.493.296-1.02.332-1.8.052-1.104.058-1.49.058-4.029 0-2.474-.007-2.878-.058-4.029-.037-.782-.142-1.31-.332-1.798a2.911 2.911 0 0 0-.703-1.08 2.884 2.884 0 0 0-1.08-.704c-.49-.19-1.016-.295-1.798-.331C14.925 4.006 14.539 4 12 4zm0-2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2z"/>
-    </g>
-</svg>
-
-		</div>
-	</a>
-	
-	
-	
-	<a href='https://www.linkedin.com/in/souhail-chahmout' target="_blank" class="linkedin icon pl-1 text-eucalyptus-400 hover:text-java-400" title="linkedin link" rel="noopener"
-		aria-label="follow on linkedin——Opens in a new window">
-		
-		<div class="fill-current h-8 w-8">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g>
-        <path fill="none" d="M0 0h24v24H0z"/>
-        <path d="M12 9.55C12.917 8.613 14.111 8 15.5 8a5.5 5.5 0 0 1 5.5 5.5V21h-2v-7.5a3.5 3.5 0 0 0-7 0V21h-2V8.5h2v1.05zM5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-1 2h2V21H4V8.5z"/>
-    </g>
-</svg>
-
-		</div>
-	</a>
-	
-	
-	
-	<a href='mailto:chahmot.s@gmail.com' target="_blank" class="mail icon pl-1 text-eucalyptus-400 hover:text-java-400" title="mail link" rel="noopener"
-		aria-label="follow on mail——Opens in a new window">
-		
-		<div class="fill-current h-8 w-8">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g>
-        <path fill="none" d="M0 0h24v24H0z"/>
-        <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z"/>
-    </g>
-</svg>
-		</div>
-	</a>
-	
-	
-</div>
-
-
-	<div class="text-sm text-gray-500 leading-tight a-gray">
-		Copyright © 2025–2025
-		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1886 words in this page.
-	</div>
-</div>
-
-			</div>
-		</aside>
-		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
-			
-<hr class="double-line" />
-<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
-    
-    <a class="flex-grow-0" href="/posts/n_3/">
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Core Balance Current Transformer (CBCT): A Comprehensive Overview
-    </a>
-    
-    
-    <a class="flex-grow-0" href="/homepage/about/">
-        Our Difference
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
-    
-</div>
-<div >
-
-
-
-</div>
-<hr />
-<div class="pb-2">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "S.C" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-<hr />
-
-		</footer>
-		
-
-<script src="/dist/app.js"></script>
-
-
-<script src="/lib/fuse.min.js"></script> 
-<script src="/lib/fastsearch.js"></script>
-
-	</div>
-</body>
-
-</html>
+\dot{\mathbf{x}} = \begin{bmatrix} \dot{\theta} \\ \ddot{\theta} \end{bmatrix} = \begin{bmatrix} \theta_d \\ -\omega^2 \sin \theta - b \theta_d \end{bmatrix}
+$$</p><p>where $\omega^2 = g/L$ and the state vector is $\mathbf{x} = [\theta, \theta_d]^T$.</p><div class=highlight><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-matlab data-lang=matlab><span style=display:flex><span><span style=color:#75715e>%% System parameters matching theoretical analysis</span>
+</span></span><span style=display:flex><span><span style=color:#111>g</span> <span style=color:#111>=</span> <span style=color:#ae81ff>9.81</span><span style=color:#111>;</span> <span style=color:#75715e>% gravity (m/s^2)</span>
+</span></span><span style=display:flex><span><span style=color:#111>L</span> <span style=color:#111>=</span> <span style=color:#ae81ff>1.0</span><span style=color:#111>;</span> <span style=color:#75715e>% pendulum length (m)</span>
+</span></span><span style=display:flex><span><span style=color:#111>b</span> <span style=color:#111>=</span> <span style=color:#ae81ff>0.5</span><span style=color:#111>;</span> <span style=color:#75715e>% damping coefficient (1/s)</span>
+</span></span><span style=display:flex><span><span style=color:#111>omega_squared</span> <span style=color:#111>=</span> <span style=color:#111>g</span><span style=color:#f92672>/</span><span style=color:#111>L</span><span style=color:#111>;</span> <span style=color:#75715e>% natural frequency squared</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% Pendulum ODE system</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>% State: y(1) = theta, y(2) = theta_dot</span>
+</span></span><span style=display:flex><span><span style=color:#111>pendulum</span> <span style=color:#111>=</span> <span style=color:#111>@(</span><span style=color:#111>t</span><span style=color:#111>,</span><span style=color:#111>y</span><span style=color:#111>)</span> <span style=color:#111>[</span><span style=color:#111>y</span><span style=color:#111>(</span><span style=color:#ae81ff>2</span><span style=color:#111>);</span> <span style=color:#f92672>-</span><span style=color:#111>omega_squared</span><span style=color:#f92672>*</span><span style=color:#111>sin</span><span style=color:#111>(</span><span style=color:#111>y</span><span style=color:#111>(</span><span style=color:#ae81ff>1</span><span style=color:#111>))</span> <span style=color:#f92672>-</span> <span style=color:#111>b</span><span style=color:#f92672>*</span><span style=color:#111>y</span><span style=color:#111>(</span><span style=color:#ae81ff>2</span><span style=color:#111>)];</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% Vector field computation</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>% For phase plane: U = dx/dt, V = dy/dt</span>
+</span></span><span style=display:flex><span><span style=color:#111>U</span> <span style=color:#111>=</span> <span style=color:#111>THDOT</span><span style=color:#111>;</span> <span style=color:#75715e>% d(theta)/dt = theta_dot</span>
+</span></span><span style=display:flex><span><span style=color:#111>V</span> <span style=color:#111>=</span> <span style=color:#f92672>-</span><span style=color:#111>omega_squared</span><span style=color:#f92672>*</span><span style=color:#111>sin</span><span style=color:#111>(</span><span style=color:#111>TH</span><span style=color:#111>)</span> <span style=color:#f92672>-</span> <span style=color:#111>b</span><span style=color:#f92672>*</span><span style=color:#111>THDOT</span><span style=color:#111>;</span> <span style=color:#75715e>% d(theta_dot)/dt from our ODE</span>
+</span></span></code></pre></div><h4 id=equilibrium-point-verification>Equilibrium Point Verification</h4><p>Our MATLAB code systematically identifies and classifies all equilibrium points according to our theoretical analysis:</p><div class=highlight><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-matlab data-lang=matlab><span style=display:flex><span><span style=color:#75715e>%% Theoretical equilibrium points: (n*pi, 0)</span>
+</span></span><span style=display:flex><span><span style=color:#111>stable_points</span> <span style=color:#111>=</span> <span style=color:#111>[</span><span style=color:#ae81ff>0</span><span style=color:#111>,</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>];</span> <span style=color:#75715e>% n even</span>
+</span></span><span style=display:flex><span><span style=color:#111>unstable_points</span> <span style=color:#111>=</span> <span style=color:#111>[</span><span style=color:#f92672>-</span><span style=color:#ae81ff>3</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#f92672>-</span><span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#ae81ff>3</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>];</span> <span style=color:#75715e>% n odd</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>% Verify stability through eigenvalue analysis</span>
+</span></span><span style=display:flex><span><span style=color:#111>omega_n</span> <span style=color:#111>=</span> <span style=color:#111>sqrt</span><span style=color:#111>(</span><span style=color:#111>omega_squared</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#111>zeta</span> <span style=color:#111>=</span> <span style=color:#111>b</span><span style=color:#f92672>/</span><span style=color:#111>(</span><span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#111>omega_n</span><span style=color:#111>);</span> <span style=color:#75715e>% damping ratio</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#111>fprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;Damping ratio ζ = %.3f\n&#39;</span><span style=color:#111>,</span> <span style=color:#111>zeta</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>if</span> <span style=color:#111>zeta</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>fprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;b² &lt; 4ω²: Stable foci (underdamped oscillation)\n&#39;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>else</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>fprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;b² ≥ 4ω²: Stable nodes (overdamped)\n&#39;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>end</span>
+</span></span></code></pre></div><h4 id=trajectory-analysis-and-phase-portrait-generation>Trajectory Analysis and Phase Portrait Generation</h4><p>The implementation generates multiple trajectories from strategically chosen initial conditions to demonstrate different behavioral regimes:</p><div class=highlight><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-matlab data-lang=matlab><span style=display:flex><span><span style=color:#75715e>%% Initial conditions for comprehensive analysis</span>
+</span></span><span style=display:flex><span><span style=color:#111>initial_conditions</span> <span style=color:#111>=</span> <span style=color:#111>[</span>
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>0.5</span><span style=color:#111>,</span> <span style=color:#ae81ff>0</span><span style=color:#111>;</span>     <span style=color:#75715e>% Small oscillation → stable focus behavior</span>
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>1.5</span><span style=color:#111>,</span> <span style=color:#ae81ff>0</span><span style=color:#111>;</span>     <span style=color:#75715e>% Larger oscillation → spiral to origin</span>
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>3.0</span><span style=color:#111>,</span> <span style=color:#ae81ff>0</span><span style=color:#111>;</span>     <span style=color:#75715e>% Near unstable point → approach to stable equilibrium</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#ae81ff>0.1</span><span style=color:#111>;</span>    <span style=color:#75715e>% Near saddle point → separatrix behavior</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>0.1</span><span style=color:#111>;</span>   <span style=color:#75715e>% Opposite side of saddle → different separatrix</span>
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>1</span><span style=color:#111>,</span> <span style=color:#ae81ff>2</span><span style=color:#111>;</span>       <span style=color:#75715e>% High energy → large phase space exploration</span>
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>1</span><span style=color:#111>,</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span><span style=color:#111>;</span>      <span style=color:#75715e>% Negative velocity → clockwise motion</span>
+</span></span><span style=display:flex><span><span style=color:#111>];</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% Solve and visualize trajectories</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>for</span> <span style=color:#111>i</span> <span style=color:#111>=</span> <span style=color:#ae81ff>1</span><span style=color:#111>:</span><span style=color:#111>size</span><span style=color:#111>(</span><span style=color:#111>initial_conditions</span><span style=color:#111>,</span><span style=color:#ae81ff>1</span><span style=color:#111>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>y0</span> <span style=color:#111>=</span> <span style=color:#111>initial_conditions</span><span style=color:#111>(</span><span style=color:#111>i</span><span style=color:#111>,:)</span><span style=color:#f92672>&#39;</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>[</span><span style=color:#111>ts</span><span style=color:#111>,</span> <span style=color:#111>ys</span><span style=color:#111>]</span> <span style=color:#111>=</span> <span style=color:#111>ode45</span><span style=color:#111>(</span><span style=color:#111>pendulum</span><span style=color:#111>,</span> <span style=color:#111>[</span><span style=color:#ae81ff>0</span><span style=color:#111>,</span> <span style=color:#ae81ff>15</span><span style=color:#111>],</span> <span style=color:#111>y0</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>plot</span><span style=color:#111>(</span><span style=color:#111>ys</span><span style=color:#111>(:,</span><span style=color:#ae81ff>1</span><span style=color:#111>),</span> <span style=color:#111>ys</span><span style=color:#111>(:,</span><span style=color:#ae81ff>2</span><span style=color:#111>),</span> <span style=color:#d88200>&#39;LineWidth&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>1.8</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>end</span>
+</span></span></code></pre></div><h4 id=vector-field-visualization>Vector Field Visualization</h4><p>The normalized vector field clearly shows the flow directions predicted by our linearization analysis:</p><div class=highlight><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-matlab data-lang=matlab><span style=display:flex><span><span style=color:#75715e>%% Normalized vector field for clear flow visualization</span>
+</span></span><span style=display:flex><span><span style=color:#111>len</span> <span style=color:#111>=</span> <span style=color:#111>sqrt</span><span style=color:#111>(</span><span style=color:#111>U</span><span style=color:#f92672>.^</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>+</span> <span style=color:#111>V</span><span style=color:#f92672>.^</span><span style=color:#ae81ff>2</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#111>len</span><span style=color:#111>(</span><span style=color:#111>len</span><span style=color:#f92672>==</span><span style=color:#ae81ff>0</span><span style=color:#111>)</span> <span style=color:#111>=</span> <span style=color:#ae81ff>1</span><span style=color:#111>;</span> <span style=color:#75715e>% avoid singularities</span>
+</span></span><span style=display:flex><span><span style=color:#111>U_norm</span> <span style=color:#111>=</span> <span style=color:#111>U</span><span style=color:#f92672>./</span><span style=color:#111>len</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>V_norm</span> <span style=color:#111>=</span> <span style=color:#111>V</span><span style=color:#f92672>./</span><span style=color:#111>len</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>quiver</span><span style=color:#111>(</span><span style=color:#111>TH</span><span style=color:#111>,</span> <span style=color:#111>THDOT</span><span style=color:#111>,</span> <span style=color:#111>U_norm</span><span style=color:#111>,</span> <span style=color:#111>V_norm</span><span style=color:#111>,</span> <span style=color:#ae81ff>0.6</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;r&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;LineWidth&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>0.8</span><span style=color:#111>);</span>
+</span></span></code></pre></div><h4 id=numerical-results-and-theoretical-validation>Numerical Results and Theoretical Validation</h4><p>The MATLAB simulation confirms our analytical predictions:</p><p><strong>For $n$ even (stable equilibria at $\theta = 0, \pm 2\pi, \pm 4\pi, &mldr;$):</strong></p><ul><li>Trajectories spiral inward to these points</li><li>Damping ratio $\zeta = \frac{b}{2\omega} = \frac{0.5}{2\sqrt{9.81}} \approx 0.080 &lt; 1$</li><li>Confirms underdamped behavior with stable foci</li></ul><p><strong>For $n$ odd (saddle points at $\theta = \pm\pi, \pm 3\pi, &mldr;$):</strong></p><ul><li>Trajectories diverge from these points along unstable manifolds</li><li>Eigenvalues: $\lambda = \frac{-b \pm \sqrt{b^2 + 4\omega^2}}{2} = \frac{-0.5 \pm \sqrt{0.25 + 39.24}}{2}$</li><li>One positive, one negative eigenvalue confirms saddle point behavior</li></ul><h4 id=complete-matlab-implementation>Complete MATLAB Implementation</h4><div class=highlight><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-matlab data-lang=matlab><span style=display:flex><span><span style=color:#75715e>%% Enhanced Phase Portrait Analysis</span>
+</span></span><span style=display:flex><span><span style=color:#111>figure</span><span style=color:#111>(</span><span style=color:#d88200>&#39;Position&#39;</span><span style=color:#111>,</span> <span style=color:#111>[</span><span style=color:#ae81ff>100</span><span style=color:#111>,</span> <span style=color:#ae81ff>100</span><span style=color:#111>,</span> <span style=color:#ae81ff>1200</span><span style=color:#111>,</span> <span style=color:#ae81ff>900</span><span style=color:#111>]);</span>
+</span></span><span style=display:flex><span><span style=color:#111>hold</span> <span style=color:#111>on</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% System parameters and theoretical calculations</span>
+</span></span><span style=display:flex><span><span style=color:#111>g</span> <span style=color:#111>=</span> <span style=color:#ae81ff>9.81</span><span style=color:#111>;</span> <span style=color:#111>L</span> <span style=color:#111>=</span> <span style=color:#ae81ff>1.0</span><span style=color:#111>;</span> <span style=color:#111>b</span> <span style=color:#111>=</span> <span style=color:#ae81ff>0.5</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>omega</span> <span style=color:#111>=</span> <span style=color:#111>sqrt</span><span style=color:#111>(</span><span style=color:#111>g</span><span style=color:#f92672>/</span><span style=color:#111>L</span><span style=color:#111>);</span> <span style=color:#111>zeta</span> <span style=color:#111>=</span> <span style=color:#111>b</span><span style=color:#f92672>/</span><span style=color:#111>(</span><span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#111>omega</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% Vector field grid</span>
+</span></span><span style=display:flex><span><span style=color:#111>theta_range</span> <span style=color:#111>=</span> <span style=color:#f92672>-</span><span style=color:#111>pi</span><span style=color:#111>:</span><span style=color:#111>pi</span><span style=color:#f92672>/</span><span style=color:#ae81ff>6</span><span style=color:#111>:</span><span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>theta_dot_range</span> <span style=color:#111>=</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>6</span><span style=color:#111>:</span><span style=color:#ae81ff>0.5</span><span style=color:#111>:</span><span style=color:#ae81ff>6</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>[</span><span style=color:#111>TH</span><span style=color:#111>,</span> <span style=color:#111>THDOT</span><span style=color:#111>]</span> <span style=color:#111>=</span> <span style=color:#111>meshgrid</span><span style=color:#111>(</span><span style=color:#111>theta_range</span><span style=color:#111>,</span> <span style=color:#111>theta_dot_range</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% Flow field computation</span>
+</span></span><span style=display:flex><span><span style=color:#111>U</span> <span style=color:#111>=</span> <span style=color:#111>THDOT</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>V</span> <span style=color:#111>=</span> <span style=color:#f92672>-</span><span style=color:#111>(</span><span style=color:#111>g</span><span style=color:#f92672>/</span><span style=color:#111>L</span><span style=color:#111>)</span><span style=color:#f92672>*</span><span style=color:#111>sin</span><span style=color:#111>(</span><span style=color:#111>TH</span><span style=color:#111>)</span> <span style=color:#f92672>-</span> <span style=color:#111>b</span><span style=color:#f92672>*</span><span style=color:#111>THDOT</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>len</span> <span style=color:#111>=</span> <span style=color:#111>sqrt</span><span style=color:#111>(</span><span style=color:#111>U</span><span style=color:#f92672>.^</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>+</span> <span style=color:#111>V</span><span style=color:#f92672>.^</span><span style=color:#ae81ff>2</span><span style=color:#111>);</span> <span style=color:#111>len</span><span style=color:#111>(</span><span style=color:#111>len</span><span style=color:#f92672>==</span><span style=color:#ae81ff>0</span><span style=color:#111>)</span> <span style=color:#111>=</span> <span style=color:#ae81ff>1</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>quiver</span><span style=color:#111>(</span><span style=color:#111>TH</span><span style=color:#111>,</span> <span style=color:#111>THDOT</span><span style=color:#111>,</span> <span style=color:#111>U</span><span style=color:#f92672>./</span><span style=color:#111>len</span><span style=color:#111>,</span> <span style=color:#111>V</span><span style=color:#f92672>./</span><span style=color:#111>len</span><span style=color:#111>,</span> <span style=color:#ae81ff>0.6</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;r&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;LineWidth&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>0.8</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% Multiple trajectory integration</span>
+</span></span><span style=display:flex><span><span style=color:#111>initial_conditions</span> <span style=color:#111>=</span> <span style=color:#111>[</span><span style=color:#ae81ff>0.5</span><span style=color:#111>,</span><span style=color:#ae81ff>0</span><span style=color:#111>;</span> <span style=color:#ae81ff>1.5</span><span style=color:#111>,</span><span style=color:#ae81ff>0</span><span style=color:#111>;</span> <span style=color:#ae81ff>3.0</span><span style=color:#111>,</span><span style=color:#ae81ff>0</span><span style=color:#111>;</span> <span style=color:#111>pi</span><span style=color:#111>,</span><span style=color:#ae81ff>0.1</span><span style=color:#111>;</span> <span style=color:#111>pi</span><span style=color:#111>,</span><span style=color:#f92672>-</span><span style=color:#ae81ff>0.1</span><span style=color:#111>;</span> <span style=color:#ae81ff>1</span><span style=color:#111>,</span><span style=color:#ae81ff>2</span><span style=color:#111>;</span> <span style=color:#ae81ff>1</span><span style=color:#111>,</span><span style=color:#f92672>-</span><span style=color:#ae81ff>2</span><span style=color:#111>];</span>
+</span></span><span style=display:flex><span><span style=color:#111>colors</span> <span style=color:#111>=</span> <span style=color:#111>lines</span><span style=color:#111>(</span><span style=color:#111>size</span><span style=color:#111>(</span><span style=color:#111>initial_conditions</span><span style=color:#111>,</span><span style=color:#ae81ff>1</span><span style=color:#111>));</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>for</span> <span style=color:#111>i</span> <span style=color:#111>=</span> <span style=color:#ae81ff>1</span><span style=color:#111>:</span><span style=color:#111>size</span><span style=color:#111>(</span><span style=color:#111>initial_conditions</span><span style=color:#111>,</span><span style=color:#ae81ff>1</span><span style=color:#111>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>[</span><span style=color:#111>ts</span><span style=color:#111>,</span> <span style=color:#111>ys</span><span style=color:#111>]</span> <span style=color:#111>=</span> <span style=color:#111>ode45</span><span style=color:#111>(@(</span><span style=color:#111>t</span><span style=color:#111>,</span><span style=color:#111>y</span><span style=color:#111>)</span> <span style=color:#111>[</span><span style=color:#111>y</span><span style=color:#111>(</span><span style=color:#ae81ff>2</span><span style=color:#111>);</span> <span style=color:#f92672>-</span><span style=color:#111>(</span><span style=color:#111>g</span><span style=color:#f92672>/</span><span style=color:#111>L</span><span style=color:#111>)</span><span style=color:#f92672>*</span><span style=color:#111>sin</span><span style=color:#111>(</span><span style=color:#111>y</span><span style=color:#111>(</span><span style=color:#ae81ff>1</span><span style=color:#111>))</span> <span style=color:#f92672>-</span> <span style=color:#111>b</span><span style=color:#f92672>*</span><span style=color:#111>y</span><span style=color:#111>(</span><span style=color:#ae81ff>2</span><span style=color:#111>)],</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>                     <span style=color:#111>[</span><span style=color:#ae81ff>0</span><span style=color:#111>,</span> <span style=color:#ae81ff>15</span><span style=color:#111>],</span> <span style=color:#111>initial_conditions</span><span style=color:#111>(</span><span style=color:#111>i</span><span style=color:#111>,:)</span><span style=color:#f92672>&#39;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>plot</span><span style=color:#111>(</span><span style=color:#111>ys</span><span style=color:#111>(:,</span><span style=color:#ae81ff>1</span><span style=color:#111>),</span> <span style=color:#111>ys</span><span style=color:#111>(:,</span><span style=color:#ae81ff>2</span><span style=color:#111>),</span> <span style=color:#d88200>&#39;Color&#39;</span><span style=color:#111>,</span> <span style=color:#111>colors</span><span style=color:#111>(</span><span style=color:#111>i</span><span style=color:#111>,:),</span> <span style=color:#d88200>&#39;LineWidth&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>1.8</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>plot</span><span style=color:#111>(</span><span style=color:#111>initial_conditions</span><span style=color:#111>(</span><span style=color:#111>i</span><span style=color:#111>,</span><span style=color:#ae81ff>1</span><span style=color:#111>),</span> <span style=color:#111>initial_conditions</span><span style=color:#111>(</span><span style=color:#111>i</span><span style=color:#111>,</span><span style=color:#ae81ff>2</span><span style=color:#111>),</span> <span style=color:#d88200>&#39;o&#39;</span><span style=color:#111>,</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>         <span style=color:#d88200>&#39;MarkerSize&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>8</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;MarkerFaceColor&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;green&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;MarkerEdgeColor&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;black&#39;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>end</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% Mark equilibrium points according to theory</span>
+</span></span><span style=display:flex><span><span style=color:#111>stable_eq</span> <span style=color:#111>=</span> <span style=color:#111>[</span><span style=color:#ae81ff>0</span><span style=color:#111>,</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>];</span> <span style=color:#75715e>% n even → stable foci</span>
+</span></span><span style=display:flex><span><span style=color:#111>unstable_eq</span> <span style=color:#111>=</span> <span style=color:#111>[</span><span style=color:#f92672>-</span><span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#111>pi</span><span style=color:#111>];</span> <span style=color:#75715e>% n odd → saddle points</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#111>plot</span><span style=color:#111>(</span><span style=color:#111>stable_eq</span><span style=color:#111>,</span> <span style=color:#111>zeros</span><span style=color:#111>(</span><span style=color:#111>size</span><span style=color:#111>(</span><span style=color:#111>stable_eq</span><span style=color:#111>)),</span> <span style=color:#d88200>&#39;o&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;MarkerSize&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>12</span><span style=color:#111>,</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>     <span style=color:#d88200>&#39;MarkerFaceColor&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;blue&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;MarkerEdgeColor&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;black&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;LineWidth&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>2</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#111>plot</span><span style=color:#111>(</span><span style=color:#111>unstable_eq</span><span style=color:#111>,</span> <span style=color:#111>zeros</span><span style=color:#111>(</span><span style=color:#111>size</span><span style=color:#111>(</span><span style=color:#111>unstable_eq</span><span style=color:#111>)),</span> <span style=color:#d88200>&#39;s&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;MarkerSize&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>12</span><span style=color:#111>,</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>     <span style=color:#d88200>&#39;MarkerFaceColor&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;red&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;MarkerEdgeColor&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;black&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;LineWidth&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>2</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% Formatting and theoretical annotation</span>
+</span></span><span style=display:flex><span><span style=color:#111>xlabel</span><span style=color:#111>(</span><span style=color:#d88200>&#39;Angular Position θ (radians)&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FontSize&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>14</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FontWeight&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;bold&#39;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#111>ylabel</span><span style=color:#111>(</span><span style=color:#d88200>&#39;Angular Velocity dθ/dt (rad/s)&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FontSize&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>14</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FontWeight&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;bold&#39;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#111>title</span><span style=color:#111>(</span><span style=color:#d88200>&#39;Damped Nonlinear Pendulum: Numerical Verification of Analytical Results&#39;</span><span style=color:#111>,</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>      <span style=color:#d88200>&#39;FontSize&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>16</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FontWeight&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;bold&#39;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#111>xlim</span><span style=color:#111>([</span><span style=color:#f92672>-</span><span style=color:#111>pi</span><span style=color:#111>,</span> <span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>]);</span> <span style=color:#111>ylim</span><span style=color:#111>([</span><span style=color:#f92672>-</span><span style=color:#ae81ff>6</span><span style=color:#111>,</span> <span style=color:#ae81ff>6</span><span style=color:#111>]);</span>
+</span></span><span style=display:flex><span><span style=color:#111>set</span><span style=color:#111>(</span><span style=color:#111>gca</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;XTick&#39;</span><span style=color:#111>,</span> <span style=color:#111>[</span><span style=color:#f92672>-</span><span style=color:#111>pi</span><span style=color:#111>:</span><span style=color:#111>pi</span><span style=color:#111>:</span><span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#111>pi</span><span style=color:#111>],</span> <span style=color:#d88200>&#39;XTickLabel&#39;</span><span style=color:#111>,</span> <span style=color:#111>{</span><span style=color:#d88200>&#39;-π&#39;</span><span style=color:#111>,</span><span style=color:#d88200>&#39;0&#39;</span><span style=color:#111>,</span><span style=color:#d88200>&#39;π&#39;</span><span style=color:#111>,</span><span style=color:#d88200>&#39;2π&#39;</span><span style=color:#111>,</span><span style=color:#d88200>&#39;3π&#39;</span><span style=color:#111>,</span><span style=color:#d88200>&#39;4π&#39;</span><span style=color:#111>});</span>
+</span></span><span style=display:flex><span><span style=color:#111>grid</span> <span style=color:#111>on</span><span style=color:#111>;</span> <span style=color:#111>set</span><span style=color:#111>(</span><span style=color:#111>gca</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;GridAlpha&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>0.3</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FontSize&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>12</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>%% Theoretical validation box</span>
+</span></span><span style=display:flex><span><span style=color:#111>dim</span> <span style=color:#111>=</span> <span style=color:#111>[</span><span style=color:#ae81ff>0.02</span> <span style=color:#ae81ff>0.68</span> <span style=color:#ae81ff>0.35</span> <span style=color:#ae81ff>0.28</span><span style=color:#111>];</span>
+</span></span><span style=display:flex><span><span style=color:#111>str</span> <span style=color:#111>=</span> <span style=color:#111>{</span><span style=color:#111>sprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;**Theoretical Validation:**&#39;</span><span style=color:#111>),</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>       <span style=color:#111>sprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;ω₀ = %.3f rad/s, ζ = %.3f&#39;</span><span style=color:#111>,</span> <span style=color:#111>omega</span><span style=color:#111>,</span> <span style=color:#111>zeta</span><span style=color:#111>),</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>       <span style=color:#111>sprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;Condition: b² = %.3f &lt; 4ω² = %.3f ✓&#39;</span><span style=color:#111>,</span> <span style=color:#111>b</span>^<span style=color:#ae81ff>2</span><span style=color:#111>,</span> <span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#111>omega</span>^<span style=color:#ae81ff>2</span><span style=color:#111>),</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>       <span style=color:#111>sprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;&#39;</span><span style=color:#111>),</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>       <span style=color:#111>sprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;**Equilibrium Classification:**&#39;</span><span style=color:#111>),</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>       <span style=color:#111>sprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;• n even (θ = 0, ±2π, ...): Stable foci&#39;</span><span style=color:#111>),</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>       <span style=color:#111>sprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;  λ = %.3f ± %.3fi&#39;</span><span style=color:#111>,</span> <span style=color:#f92672>-</span><span style=color:#111>b</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span><span style=color:#111>,</span> <span style=color:#111>omega</span><span style=color:#f92672>*</span><span style=color:#111>sqrt</span><span style=color:#111>(</span><span style=color:#ae81ff>1</span><span style=color:#f92672>-</span><span style=color:#111>zeta</span>^<span style=color:#ae81ff>2</span><span style=color:#111>)),</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>       <span style=color:#111>sprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;• n odd (θ = ±π, ±3π, ...): Saddle points&#39;</span><span style=color:#111>),</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>       <span style=color:#111>sprintf</span><span style=color:#111>(</span><span style=color:#d88200>&#39;  λ = %.3f, %.3f&#39;</span><span style=color:#111>,</span> <span style=color:#111>(</span><span style=color:#f92672>-</span><span style=color:#111>b</span><span style=color:#f92672>+</span><span style=color:#111>sqrt</span><span style=color:#111>(</span><span style=color:#111>b</span>^<span style=color:#ae81ff>2</span><span style=color:#f92672>+</span><span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#111>omega</span>^<span style=color:#ae81ff>2</span><span style=color:#111>))</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span><span style=color:#111>,</span> <span style=color:#111>(</span><span style=color:#f92672>-</span><span style=color:#111>b</span><span style=color:#f92672>-</span><span style=color:#111>sqrt</span><span style=color:#111>(</span><span style=color:#111>b</span>^<span style=color:#ae81ff>2</span><span style=color:#f92672>+</span><span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#111>omega</span>^<span style=color:#ae81ff>2</span><span style=color:#111>))</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span><span style=color:#111>)};</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#111>annotation</span><span style=color:#111>(</span><span style=color:#d88200>&#39;textbox&#39;</span><span style=color:#111>,</span> <span style=color:#111>dim</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;String&#39;</span><span style=color:#111>,</span> <span style=color:#111>str</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FitBoxToText&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;on&#39;</span><span style=color:#111>,</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>           <span style=color:#d88200>&#39;BackgroundColor&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;yellow&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FaceAlpha&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>0.95</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FontSize&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>10</span><span style=color:#111>,</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>           <span style=color:#d88200>&#39;EdgeColor&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;black&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;LineWidth&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>1</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#111>legend</span><span style=color:#111>({</span><span style=color:#d88200>&#39;Vector Field&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;Trajectories&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;Initial Conditions&#39;</span><span style=color:#111>,</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>        <span style=color:#d88200>&#39;Stable Foci (n even)&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;Saddle Points (n odd)&#39;</span><span style=color:#111>},</span> <span style=color:#75715e>...</span>
+</span></span><span style=display:flex><span>       <span style=color:#d88200>&#39;Location&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;northeast&#39;</span><span style=color:#111>,</span> <span style=color:#d88200>&#39;FontSize&#39;</span><span style=color:#111>,</span> <span style=color:#ae81ff>11</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#111>hold</span> <span style=color:#111>off</span><span style=color:#111>;</span>
+</span></span></code></pre></div><p>This numerical implementation provides quantitative validation of our theoretical analysis, demonstrating the correspondence between eigenvalue calculations and actual system behavior in the phase plane. The visualization clearly shows the predicted stable foci and unstable saddle points, confirming our linearization-based classification.</p><p><img src=/images/N_4_5.png alt=product-jpeg-500x500 title="Title here"></p><hr></div></section></article></main><div class="w-full h-0 flex-none order-3"></div><aside role=contentinfo class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl"><div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2"><div class="md:max-w-xs flex flex-col md:items-end"><ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col"><li class="px-1 md:px-0"><a href=/posts/ title="Posts page" class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400">Posts</a></li><li class="px-1 md:px-0"><a href=/categories/ title="Categories page">Categories</a></li><li class="px-1 md:px-0"><a href=/tags/ title="Tags page">Tags</a></li><li class="px-1 md:px-0"><a href=/about/ title="About page">About</a></li><div id=fastSearch class=m-0><input id=searchInput type=text size=10 class="bg-gray-100 focus:outline-none border-b border-gray-100 focus:border-eucalyptus-300 md:text-right
+placeholder-java-500 min-w-0 max-w-xxxs" placeholder=search><ul id=searchResults class="bg-gray-200 px-2 divide-y divide-gray-400"></ul></div></ul><div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start max-h-16"><a href=https://github.com/goiw111 target=_blank class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel=noopener aria-label="follow on github——Opens in a new window"><div class="fill-current h-8 w-8"><svg viewBox="0 0 24 24"><g><path fill="none" d="M0 0h24v24H0z"/><path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32.0 01-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 01.676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 01.63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731.0 0112 3.315c.912.0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 01.616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293.0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492.0 01-.012 2.716 1 1 0 01-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998.0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66.0-.955-.312-1.744-.913-2.404a1 1 0 01-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 01-.833.135A9.626 9.626.0 0012 5.315c-.89.0-1.772.119-2.592.35a1 1 0 01-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 01-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 01-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/></g></svg></div></a><a href=https://www.instagram.com/sohayl.ch target=_blank class="instagram icon pl-1 text-eucalyptus-400 hover:text-java-400" title="instagram link" rel=noopener aria-label="follow on instagram——Opens in a new window"><div class="fill-current h-8 w-8"><svg viewBox="0 0 24 24"><g><path fill="none" d="M0 0h24v24H0z"/><path fill-rule="nonzero" d="M12 9a3 3 0 100 6 3 3 0 000-6zm0-2a5 5 0 110 10 5 5 0 010-10zm6.5-.25a1.25 1.25.0 01-2.5.0 1.25 1.25.0 012.5.0zM12 4c-2.474.0-2.878.007-4.029.058-.784.037-1.31.142-1.798.332-.434.168-.747.369-1.08.703a2.89 2.89.0 00-.704 1.08c-.19.49-.295 1.015-.331 1.798C4.006 9.075 4 9.461 4 12c0 2.474.007 2.878.058 4.029.037.783.142 1.31.331 1.797.17.435.37.748.702 1.08.337.336.65.537 1.08.703.494.191 1.02.297 1.8.333C9.075 19.994 9.461 20 12 20c2.474.0 2.878-.007 4.029-.058.782-.037 1.309-.142 1.797-.331.433-.169.748-.37 1.08-.702.337-.337.538-.65.704-1.08.19-.493.296-1.02.332-1.8.052-1.104.058-1.49.058-4.029.0-2.474-.007-2.878-.058-4.029-.037-.782-.142-1.31-.332-1.798a2.911 2.911.0 00-.703-1.08 2.884 2.884.0 00-1.08-.704c-.49-.19-1.016-.295-1.798-.331C14.925 4.006 14.539 4 12 4zm0-2c2.717.0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908.0 011.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.883 4.883.0 01-1.153 1.772 4.915 4.915.0 01-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06s-3.056-.01-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.89 4.89.0 01-1.772-1.153A4.904 4.904.0 012.525 18.55c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12s.01-3.056.06-4.122c.05-1.066.217-1.79.465-2.428a4.88 4.88.0 011.153-1.772A4.897 4.897.0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2z"/></g></svg></div></a><a href=https://www.linkedin.com/in/souhail-chahmout target=_blank class="linkedin icon pl-1 text-eucalyptus-400 hover:text-java-400" title="linkedin link" rel=noopener aria-label="follow on linkedin——Opens in a new window"><div class="fill-current h-8 w-8"><svg viewBox="0 0 24 24"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M12 9.55C12.917 8.613 14.111 8 15.5 8a5.5 5.5.0 015.5 5.5V21h-2v-7.5a3.5 3.5.0 00-7 0V21h-2V8.5h2v1.05zM5 6.5a1.5 1.5.0 110-3 1.5 1.5.0 010 3zm-1 2h2V21H4V8.5z"/></g></svg></div></a><a href=mailto:chahmot.s@gmail.com target=_blank class="mail icon pl-1 text-eucalyptus-400 hover:text-java-400" title="mail link" rel=noopener aria-label="follow on mail——Opens in a new window"><div class="fill-current h-8 w-8"><svg viewBox="0 0 24 24"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm17 4.238-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z"/></g></svg></div></a></div><div class="text-sm text-gray-500 leading-tight a-gray">Copyright © 2025–2025<br>Built with Hugo and theme <a href=https://github.com/heyeshuang/hugo-theme-tokiwa>Tokiwa</a>. 1886 words in this page.</div></div></div></aside><footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2"><hr class=double-line><div class="flex flex-wrap justify-between pb-2 leading-loose font-serif"><a class=flex-grow-0 href=/posts/n_3/><svg class="fill-current inline-block h-4 w-4" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z"/></svg>
+Core Balance Current Transformer (CBCT): A Comprehensive Overview
+</a><a class=flex-grow-0 href=/posts/n_5/>A Deep Dive into the Linux Boot Process
+<svg class="fill-current inline-block h-4 w-4" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg></a></div><div></div><hr><div class=pb-2><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//S.C.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><hr></footer><script src=/dist/app.js></script><script src=/lib/fuse.min.js></script><script src=/lib/fastsearch.js></script></div></body></html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kernel on My Blog</title><link>https://goiw111.github.io/tags/kernel/</link><description>Recent content in Kernel on My Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright © 2025–2025</copyright><lastBuildDate>Wed, 27 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://goiw111.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml"/><item><title>A Deep Dive into the Linux Boot Process</title><link>https://goiw111.github.io/posts/n_5/</link><pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate><guid>https://goiw111.github.io/posts/n_5/</guid><description>&lt;p>Have you ever wondered what happens in the milliseconds between pressing your computer&amp;rsquo;s power button and seeing the login screen? It&amp;rsquo;s a complex, choreographed dance of hardware and software, and understanding it is key to troubleshooting and mastering your system.&lt;/p>
+&lt;p>Let&amp;rsquo;s take a deep dive into the expanded stages of the &lt;strong>Linux boot process&lt;/strong>.&lt;/p>
+&lt;hr>
+&lt;h3 id="1-power-on-and-firmware-initialization">&lt;strong>1. Power On and Firmware Initialization&lt;/strong>&lt;/h3>
+&lt;p>When you power on the computer, the firmware—either &lt;strong>BIOS&lt;/strong> (Basic Input/Output System) or the more modern &lt;strong>UEFI&lt;/strong> (Unified Extensible Firmware Interface)—is the first software to run. It&amp;rsquo;s loaded from a non-volatile memory chip on the motherboard. The firmware&amp;rsquo;s first job is to perform a &lt;strong>POST&lt;/strong> (Power-On Self-Test).&lt;/p>
+&lt;p>During POST, the firmware checks that basic hardware components (like the CPU, memory, and video card) are working correctly. &lt;strong>If the POST detects a critical hardware problem, the computer will often stop the boot process and signal an error using a series of audible beeps and/or by lighting a status LED on the motherboard in red.&lt;/strong>&lt;/p>
+&lt;hr>
+&lt;h3 id="2-device-detection-and-boot-device-selection">&lt;strong>2. Device Detection and Boot Device Selection&lt;/strong>&lt;/h3>
+&lt;p>After a successful POST, the firmware detects all connected hardware, including storage devices (hard drives, SSDs, USB drives), keyboards, etc. You can typically configure the &lt;strong>boot order&lt;/strong> in the firmware settings. The system then looks for a bootloader on the first device in this sequence (e.g., your primary hard drive).&lt;/p>
+&lt;hr>
+&lt;h3 id="3-loading-the-bootloader-grub">&lt;strong>3. Loading the Bootloader (GRUB)&lt;/strong>&lt;/h3>
+&lt;p>How the bootloader is loaded depends on the firmware mode:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Legacy BIOS Mode&lt;/strong>: On older systems, the BIOS reads the first &lt;strong>512 bytes&lt;/strong> from the selected boot drive. This tiny section is called the &lt;strong>Master Boot Record (MBR)&lt;/strong>. The BIOS loads this code into RAM and instructs the CPU to begin executing it in &lt;strong>real mode&lt;/strong>, a basic 16-bit processing mode.&lt;/li>
+&lt;li>&lt;strong>UEFI Mode&lt;/strong>: On modern systems, UEFI looks for an &lt;strong>EFI System Partition (ESP)&lt;/strong> on the drive, which contains bootloader files (like &lt;code>grubx64.efi&lt;/code>). UEFI loads and executes this file directly, which is a more robust and flexible method.&lt;/li>
+&lt;/ul>
+&lt;p>The &lt;strong>GRUB&lt;/strong> (GRand Unified Bootloader) is the most common bootloader for Linux. Once loaded, one of its first critical tasks is to switch the CPU from the limited real mode to &lt;strong>protected mode&lt;/strong>. This allows the CPU to access all system memory and enables the features needed to load a modern operating system kernel. GRUB then presents a menu, allowing you to choose which operating system or kernel version to boot.&lt;/p>
+&lt;hr>
+&lt;h3 id="4-loading-the-kernel-and-initial-ramdisk">&lt;strong>4. Loading the Kernel and Initial Ramdisk&lt;/strong>&lt;/h3>
+&lt;p>Once you make a selection in GRUB (or the timer runs out), GRUB loads two essential files into memory:&lt;/p>
+&lt;ol>
+&lt;li>The &lt;strong>Linux Kernel&lt;/strong> (&lt;code>vmlinuz&lt;/code>)&lt;/li>
+&lt;li>The &lt;strong>Initial RAM Disk&lt;/strong> (&lt;code>initrd.img&lt;/code> or &lt;code>initramfs&lt;/code>)&lt;/li>
+&lt;/ol>
+&lt;p>The kernel is the core of the OS, managing the CPU, memory, and hardware. The &lt;code>initramfs&lt;/code> is a temporary root filesystem loaded into memory that contains the necessary drivers and tools to mount the real root filesystem. Once the kernel is running, it uses the &lt;code>initramfs&lt;/code> to access the main storage drive and then switches to the permanent root filesystem.&lt;/p>
+&lt;hr>
+&lt;h3 id="5-starting-the">&lt;strong>5. Starting the &lt;code>init&lt;/code> Process (systemd)&lt;/strong>&lt;/h3>
+&lt;p>The kernel&amp;rsquo;s final startup task is to execute the first user-space process, which is known as the &lt;strong>&lt;code>init&lt;/code> process&lt;/strong>. This process has a Process ID (PID) of 1 and is the ancestor of all other processes on the system.&lt;/p>
+&lt;p>On most modern Linux distributions, the &lt;code>init&lt;/code> process is &lt;strong>&lt;code>systemd&lt;/code>&lt;/strong>. However, it&amp;rsquo;s important to note that older systems used different &lt;code>init&lt;/code> systems, most notably &lt;strong>&lt;code>SysVinit&lt;/code>&lt;/strong>, which relied on sequential shell scripts in &lt;code>/etc/rc.d/&lt;/code>. &lt;code>systemd&lt;/code> was designed to be faster and more powerful by starting services in parallel.&lt;/p>
+&lt;hr>
+&lt;h3 id="6-reaching-the-target-state">&lt;strong>6. Reaching the Target State&lt;/strong>&lt;/h3>
+&lt;p>&lt;code>systemd&lt;/code> uses the concept of &lt;strong>target units&lt;/strong> (which are similar to the &amp;ldquo;runlevels&amp;rdquo; in &lt;code>SysVinit&lt;/code>) to bring the system to a specific state. It parses files to determine which services and targets to start. For a typical desktop or server, it will activate the &lt;code>multi-user.target&lt;/code> (for a command-line interface) and then often the &lt;code>graphical.target&lt;/code> (for a graphical login screen).&lt;/p>
+&lt;hr>
+&lt;h3 id="7-running-startup-scripts-and-login">&lt;strong>7. Running Startup Scripts and Login&lt;/strong>&lt;/h3>
+&lt;p>As part of bringing up the targets, the system runs various startup scripts to configure the network and environment (like those in &lt;code>/etc/profile&lt;/code>). Finally, a login prompt is displayed, either on a virtual console or a graphical display manager (like GDM for GNOME).&lt;/p>
+&lt;p>At this point, the system is fully booted, and users can log in.&lt;/p></description></item></channel></rss>
